@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { insights } from '../../data/insights';
+---
+<BaseLayout title="Technology Insights for Business | Overdott Technologies" description="Practical articles on IT infrastructure, cybersecurity, cloud, business software and websites for organizations in Kenya.">
+  <section class="page-hero"><div class="page-width page-hero-inner"><p class="eyebrow">Insights</p><h1>Useful context for technology decisions.</h1><p>Plain-language perspectives on infrastructure, security, IT management, software and digital services.</p></div></section>
+  <section class="section section-tint"><div class="page-width"><div class="card-grid">{insights.map((article)=><article class="insight-card"><span class="insight-meta">{article.category} · {article.readTime}</span><h3>{article.title}</h3><p>{article.description}</p><a class="text-link" href={`/insights/${article.slug}/`}>Read article <span aria-hidden="true">→</span></a></article>)}</div></div></section>
+</BaseLayout>

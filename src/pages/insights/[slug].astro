@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { insights } from '../../data/insights';
+export function getStaticPaths(){return insights.map((article)=>({params:{slug:article.slug},props:{article}}));}
+const {article}=Astro.props;
+---
+<BaseLayout title={`${article.title} | Overdott Insights`} description={article.description}>
+  <section class="page-hero"><div class="page-width page-hero-inner"><p class="eyebrow">{article.category} · {article.readTime}</p><h1>{article.title}</h1><p>{article.description}</p></div></section>
+  <section class="section page-width article-layout"><article class="article-body">{article.paragraphs.map((paragraph,index)=>index===1?<><h2>What to consider</h2><p>{paragraph}</p></>:<p>{paragraph}</p>)}</article><aside class="article-aside"><p class="eyebrow">Keep exploring</p><p>Explore related services and discuss how they might apply to your organization.</p><a class="text-link" href="/solutions/">Explore solutions <span aria-hidden="true">→</span></a><p style="margin-top:18px"><a class="text-link" href="/contact/">Talk through a requirement <span aria-hidden="true">→</span></a></p></aside></section>
+</BaseLayout>
