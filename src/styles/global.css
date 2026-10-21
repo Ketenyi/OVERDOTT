@@ -18,5 +18,5 @@
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
 .wordmark{gap:0}.wordmark-copy strong{font-size:24px}.wordmark-copy small{font-size:10px;font-weight:600;letter-spacing:0;color:#536174;text-transform:none}.wordmark-footer .wordmark-copy small{color:#aab8c9}
 @media(max-width:480px){.wordmark-copy strong{font-size:21px}.wordmark-copy small{font-size:9px}}
-.wordmark{gap:12px;align-items:center;color:#0b1b3d}.wordmark-icon{width:46px;height:46px;flex:0 0 auto}.wordmark-copy strong{display:block;font-family:'Jaquel',sans-serif;font-size:28px;font-weight:400;line-height:1;letter-spacing:0;white-space:nowrap;text-transform:none}.wordmark-footer{color:#fff}
-@media(max-width:480px){.wordmark{gap:9px}.wordmark-icon{width:40px;height:40px}.wordmark-copy strong{font-size:23px}}
+.wordmark{gap:8px;align-items:center;color:#0b1b3d}.wordmark-icon{width:42px;height:42px;flex:0 0 auto;overflow:visible}.wordmark-copy strong{display:block;font-family:'Norvik BC','Manrope',sans-serif;font-size:29px;font-weight:700;line-height:1;letter-spacing:0;white-space:nowrap;text-transform:none}.wordmark-footer{color:#fff}
+@media(max-width:480px){.wordmark{gap:7px}.wordmark-icon{width:36px;height:36px}.wordmark-copy strong{font-size:24px}}
