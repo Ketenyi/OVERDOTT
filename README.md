@@ -20,10 +20,11 @@ The form uses Netlify Forms and sends visitors to `/contact/success/` after subm
 ## Before launch
 
 - Set `SITE_URL` to the verified HTTPS domain. The current `overdott.example` origin is reserved and must be replaced.
+- Set `PUBLIC_VELLDOT_URL` to the verified HTTPS URL for the Velldot application when it is ready; the Velldot product page otherwise directs visitors to Overdott's contact form. `PUBLIC_SORA_URL` remains a fallback for existing deployments.
 - Set `contactEmail` and `whatsappNumber` in `src/config.ts` to verified contact details. WhatsApp must be country code and digits only.
 - Test the deployed form, notifications and spam handling.
 - Review the draft privacy notice against real data practices and Kenyan privacy requirements; provide a working privacy contact.
-- Confirm SORA ERP availability and features before making product claims.
+- Verify the Velldot ERP features and tenant/module behavior described on the product page.
 - Verify product availability, licensing, vendor relationships and any partner authorization before publishing specifics.
 - Confirm service availability, delivery arrangements and permissions for imagery and social preview assets.
 - Review whether any analytics or marketing technologies require consent controls before adding them.

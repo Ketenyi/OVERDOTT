@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const velldotAppUrl = import.meta.env.PUBLIC_VELLDOT_URL?.trim();
+const signupUrl = velldotAppUrl ? new URL('/signup', velldotAppUrl).toString() : '';
+---
+
+<BaseLayout
+  title="Velldot ERP | Modular Business Software by Overdott"
+  description="Velldot ERP brings business operations into one modular workspace. Each organization manages its own licensed modules through Velldot Cloud."
+  image="/velldot-mark.svg"
+>
+  <section class="velldot-hero">
+    <div class="page-width velldot-hero-inner">
+      <div class="velldot-hero-copy">
+        <a class="velldot-wordmark" href="#main" aria-label="Velldot ERP">
+          <img src="/velldot-wordmark-white.svg" alt="Velldot" width="220" height="54" />
+        </a>
+        <p class="eyebrow">Business software by Overdott</p>
+        <h1>Run your business with <span>room to grow.</span></h1>
+        <p class="velldot-lead">Velldot ERP brings essential business operations into one connected workspace, with modules and licenses managed for your organization.</p>
+        <div class="velldot-actions">
+          <a class="button" href={signupUrl || '/contact/'}>
+            {signupUrl ? 'Create your Velldot workspace' : 'Talk to Overdott about Velldot'}
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="button velldot-button-outline" href="#workspace">Explore Velldot <span aria-hidden="true">↓</span></a>
+          <a class="velldot-contact-link" href="#modules">Explore module capabilities</a>
+        </div>
+        <p class="velldot-byline">A modular ERP product from Overdott Technologies Limited.</p>
+      </div>
+      <div class="velldot-visual" aria-label="Velldot ERP workspace overview">
+        <div class="velldot-window">
+          <div class="velldot-window-bar">
+            <span class="velldot-window-mark"><img src="/velldot-mark.svg" alt="" width="26" height="26" /></span>
+            <span>VELLDOT WORKSPACE</span>
+            <span class="velldot-status"><i></i> Organization workspace</span>
+          </div>
+          <div class="velldot-window-content">
+            <div class="velldot-window-greeting"><small>YOUR BUSINESS, CONNECTED</small><strong>One workspace.<br />Your way of working.</strong></div>
+            <div class="velldot-dashboard-grid" aria-hidden="true">
+              <div class="velldot-dashboard-card"><span>Projects</span><i class="velldot-card-icon projects">P</i><b>Delivery, in view</b></div>
+              <div class="velldot-dashboard-card"><span>Finance</span><i class="velldot-card-icon finance">F</i><b>Numbers in sync</b></div>
+              <div class="velldot-dashboard-card"><span>People</span><i class="velldot-card-icon people">H</i><b>Teams connected</b></div>
+              <div class="velldot-dashboard-card"><span>Operations</span><i class="velldot-card-icon operations">O</i><b>Work moves forward</b></div>
+            </div>
+            <div class="velldot-workspace-footer"><span><i></i> YOUR ORGANIZATION</span><span>Managed in Velldot Cloud</span></div>
+          </div>
+        </div>
+        <div class="velldot-orbit velldot-orbit-one" aria-hidden="true"></div>
+        <div class="velldot-orbit velldot-orbit-two" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section page-width velldot-intro" id="workspace">
+    <div class="velldot-section-heading">
+      <p class="eyebrow">A better way to work</p>
+      <h2>Business tools that fit the way your organization works.</h2>
+      <p>Bring day-to-day operations together, then shape the workspace around your team and the modules your organization licenses.</p>
+    </div>
+    <div class="velldot-feature-grid">
+      <article class="velldot-feature">
+        <span class="velldot-feature-number">01</span>
+        <div class="velldot-feature-icon" aria-hidden="true">↗</div>
+        <h3>One connected workspace</h3>
+        <p>Work across business functions in a shared ERP experience instead of stitching together disconnected tools.</p>
+      </article>
+      <article class="velldot-feature">
+        <span class="velldot-feature-number">02</span>
+        <div class="velldot-feature-icon" aria-hidden="true">◈</div>
+        <h3>Modules selected for you</h3>
+        <p>Your organization’s licensed modules are enabled for its own workspace. Your team sees the tools made available to your tenant.</p>
+      </article>
+      <article class="velldot-feature">
+        <span class="velldot-feature-number">03</span>
+        <div class="velldot-feature-icon" aria-hidden="true">⌘</div>
+        <h3>Control in Velldot Cloud</h3>
+        <p>Use the Velldot Cloud Admin console to manage your organization’s licenses, modules and workspace access.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section page-width velldot-modules" id="modules">
+    <div class="velldot-section-heading">
+      <p class="eyebrow">Velldot modules</p>
+      <h2>Choose the capabilities your team needs.</h2>
+      <p>Each module has its own purpose and can be enabled for the organization’s workspace through Velldot Cloud.</p>
+    </div>
+    <div class="velldot-module-grid">
+      <article><h3>Projects</h3><p>Plan delivery, milestones, teams, approvals, time and project costs.</p></article>
+      <article><h3>Finance</h3><p>Manage accounts, journals, ledgers, invoices and financial reporting.</p></article>
+      <article><h3>Procurement</h3><p>Manage suppliers, quotations, purchase orders, receiving and bills.</p></article>
+      <article><h3>Human Resources</h3><p>Maintain employee records, recruitment, leave, attendance, payroll and performance.</p></article>
+      <article><h3>Inventory</h3><p>Track products, stock movements, transfers, adjustments and valuation.</p></article>
+      <article><h3>Sales &amp; CRM</h3><p>Manage customer relationships, sales opportunities, quotations and pipeline activity.</p></article>
+      <article><h3>Helpdesk &amp; SLA</h3><p>Track service requests, assignments, response targets and support contracts.</p></article>
+      <article><h3>Asset Management</h3><p>Track asset custody, lifecycle, maintenance and endpoint discovery.</p></article>
+      <article><h3>Point of Sale</h3><p>Run tills, cashier shifts, checkout, refunds and payment reconciliation.</p></article>
+      <article><h3>Signatures &amp; Cards</h3><p>Manage email signatures, digital business cards, QR links and campaign banners.</p></article>
+    </div>
+    <p class="velldot-edition-link">Edition pricing is available on the Velldot workspace site. Module cards describe capabilities and do not list standalone prices.</p>
+    {velldotAppUrl && <a class="button" href={`${velldotAppUrl.replace(/\/$/, '')}/pricing`}>View Velldot editions <span aria-hidden="true">↗</span></a>}
+  </section>
+
+  <section class="section velldot-steps-section">
+    <div class="page-width velldot-steps-layout">
+      <div class="velldot-section-heading">
+        <p class="eyebrow">From signup to work</p>
+        <h2>Your workspace stays yours.</h2>
+        <p>Each organization has its own Velldot workspace and manages its licensed modules through its own Cloud Admin experience.</p>
+      </div>
+      <ol class="velldot-steps">
+        <li><span>01</span><div><h3>Register your organization</h3><p>Set up your Velldot tenant and organization workspace.</p></div></li>
+        <li><span>02</span><div><h3>Manage licenses and modules</h3><p>Choose and manage the modules enabled for your organization in Velldot Cloud.</p></div></li>
+        <li><span>03</span><div><h3>Get your team working</h3><p>Invite your people into the workspace and use the modules available to your tenant.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="velldot-cta">
+    <div class="page-width velldot-cta-inner">
+      <div>
+        <p class="eyebrow">Velldot ERP · Overdott</p>
+        <h2>Ready to bring your operations together?</h2>
+        <p>Talk with Overdott about Velldot ERP, your organization’s needs and the right next step.</p>
+      </div>
+      <div class="velldot-actions">
+        <a class="button button-light" href={signupUrl || '/contact/'}>
+          {signupUrl ? 'Create your Velldot workspace' : 'Get started with Velldot'}
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a class="velldot-contact-link" href="/contact/">Contact Overdott</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .velldot-hero{position:relative;overflow:hidden;background:#0b1728;color:#fff}
+  .velldot-hero::before{position:absolute;inset:0;content:"";background:radial-gradient(ellipse at 78% 48%,rgba(38,117,232,.23),transparent 45%),linear-gradient(115deg,transparent 52%,rgba(255,255,255,.025) 52.1%,transparent 52.3%);pointer-events:none}
+  .velldot-hero-inner{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(380px,.9fr);align-items:center;gap:clamp(44px,7vw,100px);min-height:650px;padding-block:70px}
+  .velldot-hero-copy{max-width:610px}
+  .velldot-wordmark{display:inline-flex;align-items:center;gap:11px;margin-bottom:44px;color:#fff}
+  .velldot-wordmark img{width:220px;height:auto}
+  .velldot-wordmark span{display:grid;gap:3px;line-height:1}
+  .velldot-wordmark strong{font-family:var(--heading);font-size:23px;letter-spacing:.12em}
+  .velldot-wordmark small{color:#a9b7c9;font-size:8px;font-weight:700;letter-spacing:.2em}
+  .velldot-hero .eyebrow{margin-bottom:15px}
+  .velldot-hero h1{max-width:600px;margin-bottom:20px;color:#fff;font-size:clamp(2.9rem,5vw,4.7rem);letter-spacing:-.055em}
+  .velldot-hero h1 span{color:#2f8cff}
+  .velldot-lead{max-width:550px;margin-bottom:28px;color:#c1ccda;font-size:17px;line-height:1.75}
+  .velldot-actions{display:flex;align-items:center;flex-wrap:wrap;gap:13px}
+  .velldot-button-outline{border-color:rgba(255,255,255,.34);background:transparent;color:#fff}
+  .velldot-button-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .velldot-hero .velldot-contact-link{color:#c1ccda;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+  .velldot-byline{margin:19px 0 0;color:#8796aa;font-size:12px}
+  .velldot-visual{position:relative;isolation:isolate;padding:26px 0}
+  .velldot-window{position:relative;z-index:1;overflow:hidden;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:#f8fafc;box-shadow:0 34px 90px rgba(0,0,0,.35);transform:rotate(1deg)}
+  .velldot-window-bar{display:flex;align-items:center;gap:10px;min-height:57px;padding:10px 17px;border-bottom:1px solid #e5eaf0;background:#fff;color:#45546a;font-size:9px;font-weight:800;letter-spacing:.12em}
+  .velldot-window-mark{display:grid;place-items:center}
+  .velldot-window-mark img{width:27px;height:27px}
+  .velldot-status{display:flex;align-items:center;gap:7px;margin-left:auto;color:#607087;font-size:9px;font-weight:600;letter-spacing:0}
+  .velldot-status i,.velldot-workspace-footer i{width:7px;height:7px;border-radius:50%;background:#35b779}
+  .velldot-window-content{padding:27px}
+  .velldot-window-greeting{display:grid;gap:8px;margin-bottom:23px}
+  .velldot-window-greeting small{color:#748398;font-size:8px;font-weight:800;letter-spacing:.16em}
+  .velldot-window-greeting strong{color:#152239;font-family:var(--heading);font-size:23px;line-height:1.25;letter-spacing:-.04em}
+  .velldot-dashboard-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .velldot-dashboard-card{position:relative;display:grid;gap:19px;min-height:103px;padding:14px;border:1px solid #e4eaf1;border-radius:10px;background:#fff;color:#748398}
+  .velldot-dashboard-card>span{font-size:9px;font-weight:700}
+  .velldot-dashboard-card b{color:#1b2a40;font-size:10px}
+  .velldot-card-icon{position:absolute;top:11px;right:12px;display:grid;width:25px;height:25px;place-items:center;border-radius:8px;background:#edf3fd;color:#2675e8;font-size:10px;font-style:normal;font-weight:800}
+  .velldot-card-icon.finance{background:#fff6db;color:#b68504}
+  .velldot-card-icon.people{background:#eaf8f1;color:#23905d}
+  .velldot-card-icon.operations{background:#f1edfd;color:#7656c8}
+  .velldot-workspace-footer{display:flex;justify-content:space-between;gap:10px;margin-top:18px;padding-top:14px;border-top:1px solid #e6ebf1;color:#718096;font-size:8px;font-weight:700}
+  .velldot-workspace-footer span:first-child{display:flex;align-items:center;gap:7px;color:#42546c;letter-spacing:.08em}
+  .velldot-workspace-footer i{width:6px;height:6px}
+  .velldot-orbit{position:absolute;z-index:-1;border:1px solid rgba(107,159,232,.23);border-radius:50%;transform:rotate(-25deg)}
+  .velldot-orbit-one{inset:-13% -12%;transform:rotate(-24deg) scaleY(.53)}
+  .velldot-orbit-two{inset:-4% -5%;transform:rotate(28deg) scaleY(.42)}
+  .velldot-intro{padding-top:96px;padding-bottom:100px}
+  .velldot-section-heading{max-width:650px}
+  .velldot-section-heading h2{max-width:610px;margin-bottom:15px}
+  .velldot-section-heading>p:last-child{max-width:600px;margin-bottom:0}
+  .velldot-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;margin-top:43px}
+  .velldot-feature{position:relative;min-height:250px;padding:27px;border:1px solid var(--line);background:#fff}
+  .velldot-feature-number{color:#8997aa;font-size:11px;font-weight:800;letter-spacing:.08em}
+  .velldot-feature-icon{display:grid;width:40px;height:40px;place-items:center;margin:22px 0 18px;border-radius:11px;background:#edf3fd;color:#2675e8;font-size:21px;font-weight:700}
+  .velldot-feature:nth-child(2) .velldot-feature-icon{background:#fff6db;color:#ab7d06}
+  .velldot-feature:nth-child(3) .velldot-feature-icon{background:#eaf8f1;color:#218553}
+  .velldot-feature h3{margin-bottom:9px}
+  .velldot-feature p{margin-bottom:0;font-size:14px;line-height:1.75}
+  .velldot-modules{padding-block:86px}
+  .velldot-module-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px}
+  .velldot-module-grid article{padding:22px;border:1px solid var(--line);background:#fff}
+  .velldot-module-grid h3{margin-bottom:9px}
+  .velldot-module-grid p{margin:0;font-size:14px;line-height:1.7}
+  .velldot-edition-link{margin:24px 0 12px;font-size:13px}
+  .velldot-steps-section{background:#f3f6fa}
+  .velldot-steps-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,8vw,110px);align-items:start}
+  .velldot-steps{display:grid;gap:0;margin:0;padding:0;list-style:none}
+  .velldot-steps li{display:grid;grid-template-columns:46px 1fr;gap:15px;padding:0 0 27px}
+  .velldot-steps li+li{padding-top:24px;border-top:1px solid #dce3eb}
+  .velldot-steps li>span{display:grid;width:36px;height:36px;place-items:center;border:1px solid #cbd8e8;border-radius:50%;color:#2675e8;font-size:10px;font-weight:800}
+  .velldot-steps h3{margin:2px 0 7px;font-size:17px}
+  .velldot-steps p{margin-bottom:0;font-size:14px}
+  .velldot-cta{padding-block:69px;background:#0b1728;color:#fff}
+  .velldot-cta-inner{display:flex;align-items:center;justify-content:space-between;gap:35px}
+  .velldot-cta .eyebrow{margin-bottom:12px;color:#2f8cff}
+  .velldot-cta h2{max-width:670px;margin-bottom:11px;color:#fff;font-size:clamp(1.8rem,3vw,2.65rem)}
+  .velldot-cta p:not(.eyebrow){max-width:620px;margin-bottom:0;color:#b8c4d2}
+  .velldot-cta .velldot-actions{flex:0 0 auto}
+  .velldot-contact-link{color:#e0e8f2;font-size:13px;font-weight:700}
+  .velldot-contact-link:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+  @media(max-width:900px){.velldot-hero-inner{grid-template-columns:1fr;gap:32px;padding-block:52px 70px}.velldot-hero-copy{max-width:720px}.velldot-wordmark{margin-bottom:35px}.velldot-visual{width:min(100%,570px);margin-inline:auto}.velldot-steps-layout{grid-template-columns:1fr;gap:38px}}
+  @media(max-width:650px){.velldot-hero-inner{min-height:0;padding-block:40px 58px}.velldot-hero h1{font-size:clamp(2.65rem,12vw,3.7rem)}.velldot-hero .velldot-actions{align-items:stretch}.velldot-hero .velldot-actions .button{width:100%}.velldot-visual{padding:10px 0}.velldot-window-content{padding:18px}.velldot-window-bar{padding-inline:12px}.velldot-status{font-size:8px}.velldot-window-greeting strong{font-size:20px}.velldot-dashboard-card{min-height:92px;padding:11px}.velldot-feature-grid,.velldot-module-grid{grid-template-columns:1fr;margin-top:30px}.velldot-feature{min-height:0}.velldot-intro,.velldot-modules{padding-block:64px}.velldot-cta-inner{align-items:flex-start;flex-direction:column}.velldot-cta .velldot-actions{width:100%;align-items:flex-start}.velldot-cta .velldot-actions .button{width:100%}.velldot-workspace-footer{font-size:7px}}
+</style>

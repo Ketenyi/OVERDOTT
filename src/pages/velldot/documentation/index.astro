@@ -1,0 +1,6 @@
+const velldotAppUrl = import.meta.env.PUBLIC_VELLDOT_URL?.trim();
+const documentationUrl = velldotAppUrl
+  ? new URL('/documentation/', velldotAppUrl).toString()
+  : '/products/';
+
+return Astro.redirect(documentationUrl, 302);
