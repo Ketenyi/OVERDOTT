@@ -1,12 +1,5 @@
 ---
 deployment:
   tasks:
-<<<<<<< HEAD
     - export DEPLOYPATH=/home/overdott/public_html/
     - /bin/cp -R dist/* $DEPLOYPATH
-=======
-    - export DEPLOYPATH=git@github.com:Ketenyi/OVERDOTT.git
-    - /bin/cp -R * $DEPLOYPATH
-    - mkdir -p $DEPLOYPATH/tmp
-    - touch $DEPLOYPATH/tmp/restart.txt
->>>>>>> fd442b4631898bee02f799ce6ab30f2612b7779e
