@@ -1,7 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=git@github.com:Ketenyi/OVERDOTT.git
-    - /bin/cp -R * $DEPLOYPATH
-    - mkdir -p $DEPLOYPATH/tmp
-    - touch $DEPLOYPATH/tmp/restart.txt
+    - export DEPLOYPATH=/home/overdott/public_html/
+    - /bin/cp -R dist/* $DEPLOYPATH
