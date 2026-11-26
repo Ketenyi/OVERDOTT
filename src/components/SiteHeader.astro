@@ -1,16 +1,43 @@
+---
+import BrandLogo from './BrandLogo.astro';
+
+const path = Astro.url.pathname;
+const links = [
+  { href: '/solutions/', label: 'Solutions' },
+  { href: '/digital-services/', label: 'Digital services' },
+  { href: '/products/', label: 'Products' },
+  { href: '/about/', label: 'About' },
+  { href: '/insights/', label: 'Insights' },
+];
+
+const isActive = (href: string) => {
+  if (href === '/products/') return path.startsWith('/products/') || path.startsWith('/velldot/');
+  return path.startsWith(href);
+};
+---
+
 <header class="site-header">
   <div class="header-inner">
-    <a class="wordmark" href="/" aria-label="Overdott Technologies Limited home">
-      <svg class="wordmark-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <path d="M42 9C38 7 34 6 30 6C16 6 6 17 6 32C6 47 17 58 32 58C42 58 51 52 55 42" stroke="currentColor" stroke-width="9" stroke-linecap="square" stroke-linejoin="round" />
-        <path d="M48 12C53 16 57 23 58 30" stroke="#2675E8" stroke-width="9" stroke-linecap="square" stroke-linejoin="round" />
-      </svg>
-      <span class="wordmark-copy"><strong>verdott</strong></span>
+    <a class="brand-link" href="/" aria-label="Overdott Technologies Limited home">
+      <BrandLogo width={178} />
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-button><span class="sr-only">Toggle navigation</span><span class="menu-lines" aria-hidden="true"></span></button>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="primary-navigation"
+      data-menu-button
+    >
+      <span class="sr-only">Toggle navigation</span>
+      <span class="menu-lines" aria-hidden="true"></span>
+    </button>
     <nav id="primary-navigation" class="primary-navigation" aria-label="Main navigation" data-navigation>
-      <a href="/solutions/">Solutions</a><a href="/digital-services/">Digital services</a><a href="/products/">Products</a><a href="/about/">About</a><a href="/insights/">Insights</a>
-      <a class="button button-small header-cta" href="/contact/">Request a consultation <span aria-hidden="true">↗</span></a>
+      {links.map((link) => (
+        <a href={link.href} aria-current={isActive(link.href) ? 'page' : undefined}>{link.label}</a>
+      ))}
+      <a class="button button-small header-cta" href="/contact/">
+        Let’s talk <span aria-hidden="true">↗</span>
+      </a>
     </nav>
   </div>
 </header>

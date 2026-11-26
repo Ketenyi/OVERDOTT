@@ -4,38 +4,102 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import { companyName, siteUrl } from '../config';
 
-interface Props { title: string; description: string; image?: string; noindex?: boolean }
-const { title, description, image = 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85', noindex = false } = Astro.props;
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image = '/brand/overdott-social.png',
+  noindex = false,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const socialImage = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b1f3a" /><meta name="description" content={description} />
-    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} /><link rel="canonical" href={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#07172c" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:type" content="website" /><meta property="og:site_name" content={companyName} /><meta property="og:title" content={title} />
-    <meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={image.startsWith('http') ? image : new URL(image, siteUrl).toString()} />
-    <meta name="twitter:card" content="summary_large_image" /><title>{title}</title>
-    <script type="application/ld+json" is:inline set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: companyName, url: siteUrl, description: 'Technology sourcing, systems integration, IT services and digital development for businesses.', areaServed: { '@type': 'Country', name: 'Kenya' } })} />
+
+    <link rel="icon" type="image/png" sizes="64x64" href="/brand/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/brand/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={companyName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: companyName,
+      url: siteUrl,
+      logo: new URL('/brand/overdott-logo.png', siteUrl).toString(),
+      description: 'Software development, technology sourcing, systems integration, IT services and cybersecurity solutions for businesses.',
+      areaServed: { '@type': 'Country', name: 'Kenya' },
+    })} />
   </head>
   <body>
-    <a class="skip-link" href="#main">Skip to content</a><SiteHeader /><main id="main"><slot /></main><SiteFooter />
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader />
+    <main id="main"><slot /></main>
+    <SiteFooter />
+
     <script>
       const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-button]');
       const navigation = document.querySelector<HTMLElement>('[data-navigation]');
+      const header = document.querySelector<HTMLElement>('.site-header');
+
+      const setMenu = (open: boolean) => {
+        menuButton?.setAttribute('aria-expanded', String(open));
+        navigation?.classList.toggle('is-open', open);
+      };
+
       menuButton?.addEventListener('click', () => {
-        const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
-        menuButton.setAttribute('aria-expanded', String(!isOpen));
-        navigation?.classList.toggle('is-open', !isOpen);
+        setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
       });
-      navigation?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-        menuButton?.setAttribute('aria-expanded', 'false');
-        navigation?.classList.remove('is-open');
-      }));
+
+      navigation?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenu(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+          setMenu(false);
+          menuButton.focus();
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        if (menuButton?.getAttribute('aria-expanded') === 'true' && header && !header.contains(event.target as Node)) {
+          setMenu(false);
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 820) setMenu(false);
+      });
     </script>
   </body>
 </html>

@@ -1,6 +1,68 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
+
 <BaseLayout title="Enquiry Received | Overdott Technologies" description="Your enquiry has been submitted to Overdott Technologies." noindex={true}>
-  <section class="section page-width" style="max-width:760px;min-height:52vh;padding-top:100px"><div class="success-mark" aria-hidden="true">✓</div><p class="eyebrow">Enquiry submitted</p><h1 style="font-size:clamp(2.4rem,5vw,3.5rem)">Thank you for getting in touch.</h1><p>We have received your enquiry and will follow up using your preferred contact method.</p><a class="button" href="/">Back to home <span aria-hidden="true">→</span></a></section>
+  <section class="section page-width success-page">
+    <div class="success-mark" aria-hidden="true">✓</div>
+    <p class="eyebrow">Enquiry submitted</p>
+    <h1 id="success-title">Thank you for getting in touch.</h1>
+    <p id="success-copy">We have received your enquiry and will follow up using your preferred contact method.</p>
+    <div class="hero-actions">
+      <a class="button" id="success-primary" href="/">
+        <span id="success-primary-label">Back to home</span> <span aria-hidden="true">→</span>
+      </a>
+      <a class="button button-outline-dark" href="/contact/">Send another enquiry</a>
+    </div>
+  </section>
 </BaseLayout>
+
+<script>
+  const interest = new URLSearchParams(window.location.search).get('interest');
+  const isVelldot = interest?.startsWith('velldot-') ?? false;
+  const isTrial = interest === 'velldot-trial';
+  const isPurchase = interest === 'velldot-purchase';
+
+  if (isVelldot) {
+    const title = document.querySelector<HTMLHeadingElement>('#success-title');
+    const copy = document.querySelector<HTMLParagraphElement>('#success-copy');
+    const primary = document.querySelector<HTMLAnchorElement>('#success-primary');
+    const primaryLabel = document.querySelector<HTMLSpanElement>('#success-primary-label');
+
+    if (title) title.textContent = isTrial
+      ? 'Your Velldot trial request is with us.'
+      : isPurchase
+        ? 'Your Velldot purchase enquiry is with us.'
+        : 'Your Velldot enquiry is with us.';
+    if (copy) copy.textContent = 'We’ll review your requirements and follow up using your preferred contact method with the right next step.';
+    if (primary) primary.href = '/velldot/';
+    if (primaryLabel) primaryLabel.textContent = 'Explore Velldot ERP';
+    document.title = isTrial
+      ? 'Velldot Trial Enquiry Received | Overdott Technologies'
+      : isPurchase
+        ? 'Velldot Purchase Enquiry Received | Overdott Technologies'
+        : 'Velldot Enquiry Received | Overdott Technologies';
+  }
+</script>
+
+<style>
+  .success-page {
+    max-width: 820px;
+    min-height: 58vh;
+    padding-top: 110px;
+  }
+
+  .success-page h1 {
+    max-width: 760px;
+    margin-bottom: 20px;
+  }
+
+  .success-page > p:not(.eyebrow) {
+    max-width: 650px;
+    font-size: 17px;
+  }
+
+  .success-page .hero-actions {
+    margin-top: 30px;
+  }
+</style>

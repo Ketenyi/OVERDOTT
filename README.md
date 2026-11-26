@@ -1,6 +1,6 @@
 # Overdott Technologies website
 
-A static Astro website for Overdott Technologies Limited. The site has dedicated service and insight routes, a shared responsive layout, and an enquiry form ready for Netlify hosting.
+A static Astro website for Overdott Technologies Limited. The site has dedicated service and insight routes, a shared responsive layout, a VellDot ERP product page, and an enquiry form configured for PHP hosting by default.
 
 ## Run locally
 
@@ -15,12 +15,15 @@ Create a production build with `npm run build`; preview it with `npm run preview
 
 ## Contact form
 
-The form uses Netlify Forms and sends visitors to `/contact/success/` after submission. Deploy the generated `dist` directory to Netlify, confirm form detection in its dashboard, configure notifications to a monitored inbox, and test a real submission. Netlify Forms will not process submissions on other hosts; configure an equivalent form endpoint before using another host.
+The default form posts to `/api/enquiry.php`, which is copied into `dist/api/` for PHP hosting such as cPanel. The handler validates submissions, includes a honeypot field and redirects to the success or error state. Configure `OVERDOTT_CONTACT_EMAIL` and `OVERDOTT_MAIL_FROM` on the host; the defaults are `info@overdott.com` and `no-reply@overdott.com`. PHP with `mbstring` and a working mail configuration is required. Test real delivery and add host-level spam/rate-limit protection before launch.
+
+To use Netlify Forms instead, set `PUBLIC_FORM_ACTION=/contact/success/` before building, deploy `dist` to Netlify, confirm form detection in its dashboard and configure notifications. Netlify Forms will not process the default PHP endpoint.
 
 ## Before launch
 
 - Set `SITE_URL` to the verified HTTPS domain. The current `overdott.example` origin is reserved and must be replaced.
 - Set `PUBLIC_VELLDOT_URL` to the verified HTTPS URL for the Velldot application when it is ready; the Velldot product page otherwise directs visitors to Overdott's contact form. `PUBLIC_SORA_URL` remains a fallback for existing deployments.
+- Choose the form backend: configure the PHP mail environment for cPanel, or set `PUBLIC_FORM_ACTION=/contact/success/` for Netlify Forms.
 - Set `contactEmail` and `whatsappNumber` in `src/config.ts` to verified contact details. WhatsApp must be country code and digits only.
 - Test the deployed form, notifications and spam handling.
 - Review the draft privacy notice against real data practices and Kenyan privacy requirements; provide a working privacy contact.
