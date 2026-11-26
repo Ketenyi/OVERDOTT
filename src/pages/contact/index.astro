@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { contactEmail, whatsappNumber } from '../../config';
+import { contactEmail, whatsappDisplay, whatsappNumber } from '../../config';
 
 const formAction = import.meta.env.PUBLIC_FORM_ACTION?.trim() || '/api/enquiry.php';
 const useNetlify = formAction === '/contact/success/';
@@ -24,11 +24,33 @@ const velldotSignupUrl = velldotAppUrl
 ---
 
 <BaseLayout title="Contact Overdott | Software, Cybersecurity & IT" description="Tell Overdott about your software project, cybersecurity requirement, technology product or Velldot ERP trial.">
-  <section class="page-hero">
+  <section class="page-hero page-hero-split">
     <div class="page-width page-hero-inner">
-      <p class="eyebrow">Contact Overdott</p>
-      <h1>Let’s talk about what your organization needs.</h1>
-      <p>Share a goal, a challenge or a product requirement. We’ll use your preferred contact method to respond.</p>
+      <div class="page-hero-copy">
+        <p class="eyebrow">Contact Overdott</p>
+        <h1>Let’s talk about what your organization needs.</h1>
+        <p>Share a goal, a challenge or a product requirement. We’ll use your preferred contact method to respond.</p>
+      </div>
+      <aside class="page-hero-aside" aria-label="Direct contact options">
+        <div class="hero-panel">
+          <p class="hero-panel-label">Prefer a direct conversation?</p>
+          <div class="hero-panel-list">
+            <div class="hero-panel-row">
+              <strong>WhatsApp</strong>
+              <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">{whatsappDisplay} <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="hero-panel-row">
+              <strong>Email</strong>
+              <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+            </div>
+            <div class="hero-panel-row">
+              <strong>Based in</strong>
+              <span>Kenya</span>
+            </div>
+          </div>
+          <a class="button button-small button-light hero-panel-action" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -134,7 +156,11 @@ const velldotSignupUrl = velldotAppUrl
       <h3>Email</h3>
       {contactEmail ? <p><a href={`mailto:${contactEmail}`}>{contactEmail}</a></p> : <p class="placeholder-contact">[Business email to be configured before launch]</p>}
       <h3>WhatsApp</h3>
-      {whatsappNumber ? <p><a href={`https://wa.me/${whatsappNumber}`} rel="noopener noreferrer">Start a WhatsApp conversation</a></p> : <p class="placeholder-contact">[WhatsApp number to be configured before launch]</p>}
+      {whatsappNumber ? (
+        <p><a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">{whatsappDisplay}</a></p>
+      ) : (
+        <p class="placeholder-contact">[WhatsApp number to be configured before launch]</p>
+      )}
       <h3>Location</h3>
       <p>Serving organizations in Kenya. Contact details and service arrangements are confirmed during an enquiry.</p>
       {velldotSignupUrl && <p><a class="text-link" href={velldotSignupUrl} rel="noopener noreferrer">Open Velldot signup <span aria-hidden="true">↗</span></a></p>}

@@ -1,10 +1,98 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { insights } from '../../data/insights';
-export function getStaticPaths(){return insights.map((article)=>({params:{slug:article.slug},props:{article}}));}
-const {article}=Astro.props;
+import { whatsappNumber } from '../../config';
+
+export function getStaticPaths() {
+  return insights.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+const relatedRoutesByCategory: Record<string, { label: string; href: string }[]> = {
+  'IT infrastructure': [
+    { label: 'IT infrastructure and systems integration', href: '/services/infrastructure/' },
+    { label: 'Technology sourcing and procurement', href: '/services/technology-procurement/' },
+  ],
+  Cybersecurity: [
+    { label: 'Cybersecurity and digital trust', href: '/services/cybersecurity/' },
+    { label: 'Cloud and IT management', href: '/services/cloud-it-management/' },
+  ],
+  'IT management': [
+    { label: 'Cloud, productivity and IT management', href: '/services/cloud-it-management/' },
+    { label: 'Cybersecurity and digital trust', href: '/services/cybersecurity/' },
+  ],
+  'Cloud and infrastructure': [
+    { label: 'Cloud, productivity and IT management', href: '/services/cloud-it-management/' },
+    { label: 'IT infrastructure and systems integration', href: '/services/infrastructure/' },
+  ],
+  'Business software': [
+    { label: 'Software and business application development', href: '/services/software-development/' },
+    { label: 'Explore Velldot ERP', href: '/velldot/' },
+  ],
+  'Web development': [
+    { label: 'Website design and development', href: '/services/website-development/' },
+    { label: 'Digital marketing and online visibility', href: '/services/digital-marketing/' },
+  ],
+};
+const relatedRoutes = relatedRoutesByCategory[article.category] ?? [
+  { label: 'Explore all solutions', href: '/solutions/' },
+];
 ---
+
 <BaseLayout title={`${article.title} | Overdott Insights`} description={article.description}>
-  <section class="page-hero"><div class="page-width page-hero-inner"><p class="eyebrow">{article.category} · {article.readTime}</p><h1>{article.title}</h1><p>{article.description}</p></div></section>
-  <section class="section page-width article-layout"><article class="article-body">{article.paragraphs.map((paragraph,index)=>index===1?<><h2>What to consider</h2><p>{paragraph}</p></>:<p>{paragraph}</p>)}</article><aside class="article-aside"><p class="eyebrow">Keep exploring</p><p>Explore related services and discuss how they might apply to your organization.</p><a class="text-link" href="/solutions/">Explore solutions <span aria-hidden="true">→</span></a><p style="margin-top:18px"><a class="text-link" href="/contact/">Talk through a requirement <span aria-hidden="true">→</span></a></p></aside></section>
+  <section class="page-hero page-hero-split">
+    <div class="page-width page-hero-inner">
+      <div class="page-hero-copy">
+        <p class="eyebrow">{article.category} · {article.readTime}</p>
+        <h1>{article.title}</h1>
+        <p>{article.description}</p>
+      </div>
+      <aside class="page-hero-aside" aria-label="Article overview">
+        <nav class="hero-panel" aria-labelledby="article-contents-label">
+          <p class="hero-panel-label" id="article-contents-label">In this article</p>
+          <ul class="hero-panel-list">
+            <li><a href="#context">Context</a></li>
+            <li><a href="#what-to-consider">What to consider</a></li>
+            <li><a href="#practical-next-step">Practical next step</a></li>
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-compact page-width article-layout">
+    <article class="article-body">
+      <p id="context">{article.paragraphs[0]}</p>
+      <h2 id="what-to-consider">What to consider</h2>
+      <p>{article.paragraphs[1]}</p>
+      {article.paragraphs.slice(2, -1).map((paragraph) => <p>{paragraph}</p>)}
+      <h2 id="practical-next-step">A practical next step</h2>
+      <p>{article.paragraphs[article.paragraphs.length - 1]}</p>
+    </article>
+
+    <aside class="article-aside" aria-label="Related services and contact">
+      <p class="eyebrow">Keep exploring</p>
+      <p>Explore related services and discuss how they might apply to your organization.</p>
+      <nav aria-label="Related service routes">
+        <ul>
+          {relatedRoutes.map((route) => (
+            <li>
+              <a class="text-link" href={route.href}>
+                {route.label} <span aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <p>
+        <a class="text-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+          Ask on WhatsApp <span aria-hidden="true">↗</span>
+        </a>
+      </p>
+    </aside>
+  </section>
 </BaseLayout>

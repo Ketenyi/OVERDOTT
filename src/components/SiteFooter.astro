@@ -1,5 +1,6 @@
 ---
 import BrandLogo from './BrandLogo.astro';
+import { contactEmail, whatsappDisplay, whatsappNumber } from '../config';
 ---
 
 <footer class="site-footer">
@@ -10,6 +11,12 @@ import BrandLogo from './BrandLogo.astro';
       </a>
       <p class="footer-statement">Technology, integrated.<br />Security, considered.</p>
       <p class="footer-note">Software development, technology sourcing and cybersecurity solutions for organizations in Kenya.</p>
+      <div class="footer-contact">
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">
+          WhatsApp {whatsappDisplay} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
     <div class="footer-links">
       <div>
@@ -30,7 +37,7 @@ import BrandLogo from './BrandLogo.astro';
         <h2>Products</h2>
         <a href="/velldot/">Velldot ERP</a>
         <a href="/products/">Software &amp; licensing</a>
-        <a href="/products/">Product enquiries</a>
+        <a href="/products/#categories">Technology categories</a>
         <a href="/contact/">Contact Overdott</a>
       </div>
     </div>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { whatsappDisplay, whatsappNumber } from '../../config';
 
 const categories = [
   ['Servers, storage and networking', 'Hardware enquiries for infrastructure needs, with compatibility and deployment considerations.'],
@@ -30,11 +31,24 @@ const velldotPricingUrl = velldotAppUrl
 ---
 
 <BaseLayout title="Software Products & Technology Sourcing | Overdott" description="Explore Velldot ERP and enquire about hardware, software, cloud, cybersecurity and business application options from Overdott.">
-  <section class="page-hero">
+  <section class="page-hero page-hero-split">
     <div class="page-width page-hero-inner">
-      <p class="eyebrow">Products and technology sourcing</p>
-      <h1>Find technology that fits your requirements.</h1>
-      <p>Explore our own business software or tell us what you need to source, license and implement.</p>
+      <div class="page-hero-copy">
+        <p class="eyebrow">Products and technology sourcing</p>
+        <h1>Find technology that fits your requirements.</h1>
+        <p>Explore our own business software or tell us what you need to source, license and implement.</p>
+      </div>
+      <aside class="page-hero-aside" aria-label="Product areas">
+        <div class="hero-panel">
+          <p class="hero-panel-label">What we can help with</p>
+          <div class="hero-panel-grid">
+            <div class="hero-panel-item"><small>Owned product</small><strong>Velldot ERP</strong></div>
+            <div class="hero-panel-item"><small>Software</small><strong>Licensing</strong></div>
+            <div class="hero-panel-item"><small>Infrastructure</small><strong>Hardware</strong></div>
+            <div class="hero-panel-item"><small>Security</small><strong>Controls</strong></div>
+          </div>
+        </div>
+      </aside>
     </div>
   </section>
 
@@ -67,7 +81,7 @@ const velldotPricingUrl = velldotAppUrl
     </div>
   </section>
 
-  <section class="section section-tint">
+  <section class="section section-tint" id="categories">
     <div class="page-width">
       <div class="section-heading">
         <p class="eyebrow">Technology categories</p>
@@ -91,6 +105,7 @@ const velldotPricingUrl = velldotAppUrl
       </div>
       <div class="cta-actions">
         <a class="button button-light" href="/contact/">Make a product enquiry <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">WhatsApp {whatsappDisplay} <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
@@ -107,12 +122,12 @@ const velldotPricingUrl = velldotAppUrl
   }
 
   .product-directory-copy {
-    padding: clamp(34px, 5vw, 62px);
+    padding: clamp(28px, 4vw, 48px);
   }
 
   .product-directory-copy > img {
     width: 174px;
-    margin-bottom: 38px;
+    margin-bottom: 26px;
   }
 
   .product-directory-copy h2 {
@@ -129,7 +144,7 @@ const velldotPricingUrl = velldotAppUrl
 
   .product-directory-visual {
     position: relative;
-    min-height: 480px;
+    min-height: 420px;
     overflow: hidden;
     background:
       radial-gradient(circle at center, rgba(38, 117, 232, 0.2), transparent 45%),
@@ -207,7 +222,7 @@ const velldotPricingUrl = velldotAppUrl
     }
 
     .product-directory-visual {
-      min-height: 380px;
+      min-height: 340px;
     }
   }
 
@@ -217,7 +232,7 @@ const velldotPricingUrl = velldotAppUrl
     }
 
     .product-directory-visual {
-      min-height: 330px;
+      min-height: 300px;
     }
 
     .directory-mark {

@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { companyName, siteUrl } from '../config';
+import { companyName, contactEmail, siteUrl, whatsappDisplay } from '../config';
 
 interface Props {
   title: string;
@@ -19,6 +19,8 @@ const {
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const socialImage = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isInnerPage = path !== '/' && !path.startsWith('/velldot');
 ---
 
 <!doctype html>
@@ -57,13 +59,22 @@ const socialImage = image.startsWith('http') ? image : new URL(image, siteUrl).t
       url: siteUrl,
       logo: new URL('/brand/overdott-logo.png', siteUrl).toString(),
       description: 'Software development, technology sourcing, systems integration, IT services and cybersecurity solutions for businesses.',
+      email: contactEmail,
+      telephone: whatsappDisplay,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: whatsappDisplay,
+        email: contactEmail,
+        contactType: 'Business enquiries',
+        areaServed: 'KE',
+      },
       areaServed: { '@type': 'Country', name: 'Kenya' },
     })} />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <SiteHeader />
-    <main id="main"><slot /></main>
+    <main id="main" class={isInnerPage ? 'inner-main' : undefined}><slot /></main>
     <SiteFooter />
 
     <script>
