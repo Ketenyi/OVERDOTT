@@ -6,54 +6,54 @@ import { insights } from '../data/insights';
 
 const capabilities = [
   {
-    service: findService('software-development')!,
+    service: findService('website-development')!,
     number: '01',
+    label: 'Web development',
+    description: 'Corporate websites, landing pages and web applications designed to make your value clear.',
+    icon: 'web',
+  },
+  {
+    service: findService('software-development')!,
+    number: '02',
     label: 'Software development',
     description: 'Business applications, integrations and digital products shaped around the way your team works.',
     icon: 'code',
   },
   {
     service: findService('cybersecurity')!,
-    number: '02',
+    number: '03',
     label: 'Cybersecurity',
     description: 'Practical protection for identities, endpoints, email and networks, with risks clearly prioritized.',
     icon: 'shield',
   },
   {
-    service: findService('infrastructure')!,
-    number: '03',
-    label: 'Infrastructure & cloud',
-    description: 'Plan, source and integrate the systems your business depends on, with compatibility in view.',
-    icon: 'cloud',
-  },
-  {
     service: findService('technology-procurement')!,
     number: '04',
-    label: 'Technology sourcing',
-    description: 'Evaluate hardware, software and licensing options before committing to a purchase.',
+    label: 'Infrastructure & sourcing',
+    description: 'Plan, source and integrate the technology your business depends on, with compatibility in view.',
     icon: 'source',
   },
 ];
 ---
 
 <BaseLayout
-  title="Overdott Technologies | Software, Cybersecurity & IT Solutions"
-  description="Overdott develops business software, sources technology and delivers cybersecurity, infrastructure and digital solutions for organizations in Kenya."
+  title="Web Development & Business Software | Overdott Technologies"
+  description="Overdott builds corporate websites, web applications and business software, with cybersecurity, cloud, infrastructure and technology sourcing for organizations in Kenya."
 >
   <section class="hero">
     <div class="hero-inner page-width">
       <div class="hero-copy">
-        <p class="eyebrow">Software development · Cybersecurity · Kenya</p>
-        <h1>Software, security and systems—<span>built to work together.</span></h1>
-        <p>Overdott helps organizations build business software, source technology and strengthen cybersecurity, with infrastructure, cloud and digital delivery considered as one connected picture.</p>
+        <p class="eyebrow">Web development · Business software · Kenya</p>
+        <h1>Websites and software—<span>built for serious business.</span></h1>
+        <p>We create corporate websites, web applications and business systems that make your offer clear and your operations work better—backed by cybersecurity, cloud and infrastructure expertise.</p>
         <div class="hero-actions">
-          <a class="button" href="/solutions/">Explore our solutions <span aria-hidden="true">→</span></a>
-          <a class="button button-outline" href="/velldot/">Meet Velldot ERP <span aria-hidden="true">↗</span></a>
+          <a class="button" href="/contact/?interest=website-development">Start a website project <span aria-hidden="true">→</span></a>
+          <a class="button button-outline" href="/solutions/">Explore our solutions <span aria-hidden="true">↗</span></a>
         </div>
         <div class="hero-proof" aria-label="Our core capabilities">
-          <span>Custom software</span>
+          <span>Corporate websites</span>
+          <span>Web applications</span>
           <span>Cybersecurity</span>
-          <span>IT infrastructure</span>
           <span>Technology sourcing</span>
         </div>
       </div>
@@ -65,8 +65,8 @@ const capabilities = [
     <div class="section-topline">
       <div class="section-heading">
         <p class="eyebrow">What we do</p>
-        <h2>One technology partner. Fewer disconnected decisions.</h2>
-        <p>From a single application to a broader technology program, we connect the technical pieces to the outcome your organization needs.</p>
+        <h2>Your digital front door. The systems behind it.</h2>
+        <p>Start with a website or connect a wider technology program. We bring design, software, security and infrastructure into one clear plan.</p>
       </div>
       <a class="text-link" href="/digital-services/">Explore digital services <span aria-hidden="true">→</span></a>
     </div>
@@ -76,6 +76,7 @@ const capabilities = [
           <div class="capability-top">
             <span class="capability-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                {item.icon === 'web' && <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 9h18M7 6.5h.01M10 6.5h.01M7 13h6M7 16h10" /></>}
                 {item.icon === 'code' && <><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" /></>}
                 {item.icon === 'shield' && <><path d="M12 3 19 6v5c0 4.4-2.9 8-7 10-4.1-2-7-5.6-7-10V6l7-3Z" /><path d="m9 12 2 2 4-4" /></>}
                 {item.icon === 'cloud' && <><path d="M7 18h10a4 4 0 0 0 .6-7.9A6 6 0 0 0 6.2 9 4.5 4.5 0 0 0 7 18Z" /><path d="M12 12v5M9.5 14.5 12 17l2.5-2.5" /></>}
@@ -89,6 +90,65 @@ const capabilities = [
           <span class="capability-link">Explore capability <span aria-hidden="true">↗</span></span>
         </a>
       ))}
+    </div>
+  </section>
+
+  <section class="section section-dark web-showcase">
+    <div class="page-width web-showcase-grid">
+      <div class="web-showcase-copy">
+        <p class="eyebrow">Corporate web development</p>
+        <h2>A website that explains your value—and starts the right conversation.</h2>
+        <p>We combine clear positioning, considered design and dependable development so your organization is easier to understand, find and approach.</p>
+        <ul class="check-list">
+          <li>Corporate websites and campaign landing pages</li>
+          <li>Web applications and customer portal enquiries</li>
+          <li>Responsive, accessible and maintainable by design</li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button" href="/contact/?interest=website-development">Discuss your website <span aria-hidden="true">→</span></a>
+          <a class="text-link web-text-link" href="/services/website-development/">Explore web development <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <div class="web-blueprint" aria-label="Illustrative corporate website blueprint">
+        <div class="web-browser-bar">
+          <span class="web-browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="web-browser-address">yourorganization.com</span>
+          <span class="web-browser-status"><i></i> Ready to build</span>
+        </div>
+        <div class="web-browser-body">
+          <div class="web-blueprint-nav">
+            <span class="web-blueprint-brand"><i>O</i> Organization</span>
+            <span class="web-blueprint-links">Company&nbsp;&nbsp; Solutions&nbsp;&nbsp; Insights</span>
+            <span class="web-blueprint-contact">Let’s talk <b>↗</b></span>
+          </div>
+          <div class="web-blueprint-hero">
+            <div>
+              <small>BUILT FOR WHAT’S NEXT</small>
+              <strong>Expertise that moves business forward.</strong>
+              <p>Clear positioning, useful content and a confident path to enquiry.</p>
+              <span class="web-blueprint-button">Start a conversation <b>→</b></span>
+            </div>
+            <div class="web-blueprint-signal" aria-hidden="true">
+              <span class="signal-ring signal-ring-one"></span>
+              <span class="signal-ring signal-ring-two"></span>
+              <span class="signal-ring signal-ring-three"></span>
+              <span class="signal-core">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M5 18 10 7l4 7 2-4 3 8H5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" /></svg>
+              </span>
+              <span class="signal-tag signal-tag-top">Strategy</span>
+              <span class="signal-tag signal-tag-bottom">Growth</span>
+            </div>
+          </div>
+          <div class="web-blueprint-cards">
+            <div><span>01</span><strong>Clear positioning</strong><small>Make your value easy to understand.</small></div>
+            <div><span>02</span><strong>Useful journeys</strong><small>Guide visitors toward the right next step.</small></div>
+            <div><span>03</span><strong>Strong foundation</strong><small>Keep content and technology maintainable.</small></div>
+          </div>
+          <div class="web-blueprint-flow"><span>Strategy</span><b>→</b><span>Design</span><b>→</b><span>Development</span><b>→</b><span>Launch</span></div>
+        </div>
+        <span class="web-blueprint-caption">Illustrative blueprint · not a client website</span>
+      </div>
     </div>
   </section>
 
@@ -132,17 +192,22 @@ const capabilities = [
     </div>
   </section>
 
-  <section class="section page-width">
-    <div class="section-heading">
-      <p class="eyebrow">How we work</p>
-      <h2>Clear thinking before technical decisions.</h2>
-      <p>Good delivery starts with the right questions. We keep requirements, responsibilities and next steps visible throughout the engagement.</p>
-    </div>
-    <div class="process-grid">
-      <div class="process-step"><h3>Understand</h3><p>Learn the outcome, current environment, constraints and people involved.</p></div>
-      <div class="process-step"><h3>Design</h3><p>Compare practical options and define a scope with clear assumptions.</p></div>
-      <div class="process-step"><h3>Deliver</h3><p>Build, configure, integrate and test the agreed solution.</p></div>
-      <div class="process-step"><h3>Support</h3><p>Hand over with clarity and agree ongoing support where needed.</p></div>
+  <section class="section section-dark process-section">
+    <div class="page-width">
+      <div class="section-topline">
+        <div class="section-heading">
+          <p class="eyebrow">How we work</p>
+          <h2>Clear thinking before technical decisions.</h2>
+          <p>Good delivery starts with the right questions. We keep requirements, responsibilities and next steps visible throughout the engagement.</p>
+        </div>
+        <a class="text-link web-text-link" href="/about/">How we work <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="process-grid">
+        <div class="process-step"><h3>Understand</h3><p>Learn the outcome, current environment, constraints and people involved.</p></div>
+        <div class="process-step"><h3>Design</h3><p>Compare practical options and define a scope with clear assumptions.</p></div>
+        <div class="process-step"><h3>Deliver</h3><p>Build, configure, integrate and test the agreed solution.</p></div>
+        <div class="process-step"><h3>Support</h3><p>Hand over with clarity and agree ongoing support where needed.</p></div>
+      </div>
     </div>
   </section>
 
@@ -172,11 +237,11 @@ const capabilities = [
     <div class="page-width cta-inner">
       <div>
         <p class="eyebrow">Start a conversation</p>
-        <h2>What does your organization need technology to do better?</h2>
-        <p>Tell us the outcome. We’ll help you explore the right software, systems and next steps.</p>
+        <h2>Planning a corporate website or digital platform?</h2>
+        <p>Tell us what your organization needs to achieve. We’ll help define the right design, technology and next steps.</p>
       </div>
       <div class="cta-actions">
-        <a class="button button-light" href="/contact/">Talk to Overdott <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="/contact/?interest=website-development">Discuss your project <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
@@ -185,16 +250,16 @@ const capabilities = [
 <style>
   .capability-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .capability-card {
     position: relative;
     display: flex;
-    min-height: 280px;
+    min-height: 246px;
     overflow: hidden;
-    padding: 30px;
+    padding: 24px 21px 21px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
     flex-direction: column;
@@ -223,7 +288,7 @@ const capabilities = [
 
   .capability-top {
     display: flex;
-    margin-bottom: 30px;
+    margin-bottom: 23px;
     align-items: center;
     justify-content: space-between;
   }
@@ -260,8 +325,8 @@ const capabilities = [
   }
 
   .capability-card h3 {
-    margin-bottom: 12px;
-    font-size: 1.45rem;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
   }
 
   .capability-card:first-child h3 {
@@ -270,8 +335,9 @@ const capabilities = [
 
   .capability-card p {
     max-width: 470px;
-    margin-bottom: 25px;
-    font-size: 14px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
   .capability-card:first-child p {
@@ -296,20 +362,408 @@ const capabilities = [
     transition: transform 180ms ease;
   }
 
+  .web-showcase-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(480px, 1.15fr);
+    align-items: center;
+    gap: clamp(40px, 6vw, 76px);
+  }
+
+  .web-showcase-copy h2 {
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 3.4vw, 3rem);
+  }
+
+  .web-showcase-copy > p:not(.eyebrow) {
+    margin-bottom: 0;
+    font-size: 15px;
+  }
+
+  .web-showcase-copy .check-list {
+    margin-block: 20px 24px;
+    gap: 10px;
+  }
+
+  .web-showcase-copy .check-list li {
+    font-size: 13px;
+  }
+
+  .web-text-link {
+    color: var(--blue-light);
+    font-size: 13px;
+  }
+
+  .process-section .section-heading {
+    max-width: 680px;
+  }
+
+  .process-section .process-grid {
+    gap: 12px;
+  }
+
+  .process-section .process-step {
+    min-height: 158px;
+    padding: 20px;
+    border: 1px solid rgba(158, 197, 255, 0.15);
+    border-radius: 12px;
+    background: rgba(13, 35, 66, 0.68);
+  }
+
+  .process-section .process-step::before {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    margin-bottom: 18px;
+    border: 1px solid rgba(138, 184, 255, 0.2);
+    border-radius: 8px;
+    place-items: center;
+    color: var(--blue-light);
+    background: rgba(138, 184, 255, 0.08);
+    font-size: 10px;
+  }
+
+  .process-section .process-step::after {
+    display: none;
+  }
+
+  .process-section .process-step h3 {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+  }
+
+  .process-section .process-step p {
+    font-size: 13px;
+  }
+
+  .web-blueprint {
+    position: relative;
+    min-width: 0;
+    border: 1px solid rgba(158, 197, 255, 0.24);
+    border-radius: 16px;
+    background: #f5f8fc;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3);
+    transform: perspective(1200px) rotateY(-3deg) rotateX(1deg);
+  }
+
+  .web-blueprint::after {
+    position: absolute;
+    z-index: -1;
+    inset: 12% -8% -8% 12%;
+    border: 1px solid rgba(138, 184, 255, 0.15);
+    border-radius: 18px;
+    content: '';
+  }
+
+  .web-browser-bar {
+    display: flex;
+    min-height: 38px;
+    padding: 0 13px;
+    border-bottom: 1px solid #dce4ef;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+  }
+
+  .web-browser-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .web-browser-dots i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #d2dce8;
+  }
+
+  .web-browser-dots i:first-child {
+    background: #8ab8ff;
+  }
+
+  .web-browser-address {
+    min-width: 0;
+    padding: 4px 12px;
+    border-radius: 5px;
+    flex: 1;
+    color: #77869a;
+    background: #f2f5f9;
+    font-size: 8px;
+    text-align: center;
+  }
+
+  .web-browser-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #698077;
+    font-size: 8px;
+    white-space: nowrap;
+  }
+
+  .web-browser-status i {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #2baf76;
+  }
+
+  .web-browser-body {
+    padding: 16px;
+  }
+
+  .web-blueprint-nav {
+    display: flex;
+    padding-bottom: 13px;
+    border-bottom: 1px solid #e0e7f0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .web-blueprint-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--navy);
+    font-family: var(--heading);
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .web-blueprint-brand i {
+    display: grid;
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    place-items: center;
+    color: #fff;
+    background: var(--blue);
+    font-size: 9px;
+    font-style: normal;
+  }
+
+  .web-blueprint-links {
+    color: #7a889b;
+    font-size: 7px;
+  }
+
+  .web-blueprint-contact {
+    padding: 5px 8px;
+    border-radius: 4px;
+    color: #fff;
+    background: var(--navy);
+    font-size: 7px;
+    font-weight: 700;
+  }
+
+  .web-blueprint-contact b {
+    margin-left: 3px;
+    color: var(--blue-light);
+  }
+
+  .web-blueprint-hero {
+    display: grid;
+    min-height: 180px;
+    padding: 22px 0;
+    grid-template-columns: minmax(0, 1.25fr) minmax(130px, 0.75fr);
+    align-items: center;
+    gap: 18px;
+  }
+
+  .web-blueprint-hero small {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--blue);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+  }
+
+  .web-blueprint-hero strong {
+    display: block;
+    max-width: 280px;
+    margin-bottom: 8px;
+    color: var(--ink);
+    font-family: var(--heading);
+    font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+    letter-spacing: -0.045em;
+    line-height: 1.13;
+  }
+
+  .web-blueprint-hero p {
+    max-width: 260px;
+    margin-bottom: 13px;
+    color: #68778b;
+    font-size: 8px;
+    line-height: 1.55;
+  }
+
+  .web-blueprint-button {
+    display: inline-flex;
+    padding: 7px 10px;
+    border-radius: 5px;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    background: var(--blue);
+    font-size: 7px;
+    font-weight: 700;
+  }
+
+  .web-blueprint-button b {
+    color: #cfe2ff;
+  }
+
+  .web-blueprint-signal {
+    position: relative;
+    display: grid;
+    width: 136px;
+    height: 136px;
+    margin-inline: auto;
+    place-items: center;
+  }
+
+  .signal-ring {
+    position: absolute;
+    border: 1px solid #cadaf0;
+    border-radius: 50%;
+  }
+
+  .signal-ring-one {
+    width: 126px;
+    height: 126px;
+  }
+
+  .signal-ring-two {
+    width: 92px;
+    height: 92px;
+    border-style: dashed;
+  }
+
+  .signal-ring-three {
+    width: 58px;
+    height: 58px;
+    border-color: #9fc3f7;
+    background: #eaf2ff;
+  }
+
+  .signal-core {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    place-items: center;
+    color: #fff;
+    background: var(--blue);
+    box-shadow: 0 10px 24px rgba(38, 117, 232, 0.22);
+  }
+
+  .signal-core svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .signal-tag {
+    position: absolute;
+    z-index: 2;
+    padding: 4px 7px;
+    border: 1px solid #d9e5f5;
+    border-radius: 4px;
+    color: #48627f;
+    background: #fff;
+    box-shadow: 0 5px 12px rgba(7, 23, 44, 0.06);
+    font-size: 7px;
+    font-weight: 700;
+  }
+
+  .signal-tag-top {
+    top: 8px;
+    right: 0;
+  }
+
+  .signal-tag-bottom {
+    bottom: 8px;
+    left: 0;
+  }
+
+  .web-blueprint-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .web-blueprint-cards > div {
+    display: grid;
+    min-height: 78px;
+    padding: 10px;
+    border: 1px solid #dfe7f1;
+    border-radius: 7px;
+    align-content: start;
+    background: #fff;
+  }
+
+  .web-blueprint-cards span {
+    margin-bottom: 7px;
+    color: var(--blue);
+    font-size: 7px;
+    font-weight: 700;
+  }
+
+  .web-blueprint-cards strong {
+    margin-bottom: 4px;
+    color: #26384f;
+    font-family: var(--heading);
+    font-size: 9px;
+  }
+
+  .web-blueprint-cards small {
+    color: #78869a;
+    font-size: 7px;
+    line-height: 1.45;
+  }
+
+  .web-blueprint-flow {
+    display: flex;
+    padding-top: 13px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: #5e6f84;
+    font-size: 7px;
+    font-weight: 600;
+  }
+
+  .web-blueprint-flow b {
+    color: var(--blue);
+  }
+
+  .web-blueprint-caption {
+    display: block;
+    padding: 8px 16px;
+    border-top: 1px solid #dce4ef;
+    border-radius: 0 0 16px 16px;
+    color: #7c899a;
+    background: #fff;
+    font-size: 7px;
+    text-align: center;
+  }
+
   .product-spotlight {
     display: grid;
-    padding: clamp(34px, 5vw, 64px);
+    padding: clamp(28px, 4vw, 44px);
     border: 1px solid #dce6f4;
-    border-radius: 24px;
+    border-radius: 20px;
     grid-template-columns: minmax(0, 0.95fr) minmax(380px, 1.05fr);
     align-items: center;
-    gap: clamp(38px, 6vw, 76px);
+    gap: clamp(32px, 5vw, 58px);
     background: #eaf1fb;
   }
 
   .product-spotlight-copy h2 {
-    margin-bottom: 20px;
-    font-size: clamp(2rem, 3.4vw, 3rem);
+    margin-bottom: 16px;
+    font-size: clamp(1.9rem, 3.1vw, 2.7rem);
   }
 
   .product-spotlight-copy > p:not(.eyebrow) {
@@ -317,7 +771,7 @@ const capabilities = [
   }
 
   .product-spotlight-copy .check-list {
-    margin-block: 22px 28px;
+    margin-block: 18px 22px;
   }
 
   .product-spotlight-copy .check-list li {
@@ -518,9 +972,26 @@ const capabilities = [
     }
   }
 
+  @media (max-width: 1080px) {
+    .capability-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
   @media (max-width: 980px) {
+    .web-showcase-grid,
     .product-spotlight {
       grid-template-columns: 1fr;
+    }
+
+    .web-showcase-copy {
+      max-width: 700px;
+    }
+
+    .web-blueprint {
+      width: min(100%, 620px);
+      margin-inline: auto;
+      transform: none;
     }
 
     .product-spotlight-copy {
@@ -536,12 +1007,138 @@ const capabilities = [
 
   @media (max-width: 600px) {
     .capability-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
     }
 
     .capability-card {
       min-height: 0;
-      padding: 25px;
+      padding: 18px 16px;
+    }
+
+    .capability-top {
+      margin-bottom: 18px;
+    }
+
+    .capability-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+    }
+
+    .capability-card h3 {
+      font-size: 1.05rem;
+    }
+
+    .capability-card p {
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+
+    .capability-link {
+      gap: 5px;
+      font-size: 11px;
+    }
+
+    .web-showcase-copy .hero-actions {
+      align-items: flex-start;
+    }
+
+    .process-section .section-topline {
+      gap: 18px;
+    }
+
+    .process-section .process-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .process-section .process-step {
+      min-height: 0;
+      padding: 16px;
+    }
+
+    .process-section .process-step::before {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 12px;
+      border-radius: 7px;
+      font-size: 9px;
+    }
+
+    .process-section .process-step h3 {
+      font-size: 0.98rem;
+    }
+
+    .process-section .process-step p {
+      font-size: 12px;
+    }
+
+    .web-blueprint-links {
+      display: none;
+    }
+
+    .web-blueprint-hero {
+      min-height: 0;
+      padding-block: 18px;
+      grid-template-columns: minmax(0, 1fr) 96px;
+      gap: 10px;
+    }
+
+    .web-blueprint-signal {
+      width: 92px;
+      height: 92px;
+    }
+
+    .signal-ring-one {
+      width: 88px;
+      height: 88px;
+    }
+
+    .signal-ring-two {
+      width: 66px;
+      height: 66px;
+    }
+
+    .signal-ring-three {
+      width: 44px;
+      height: 44px;
+    }
+
+    .signal-core {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+    }
+
+    .signal-core svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .signal-tag {
+      display: none;
+    }
+
+    .web-blueprint-cards {
+      gap: 5px;
+    }
+
+    .web-blueprint-cards > div {
+      min-height: 0;
+      padding: 8px;
+    }
+
+    .web-blueprint-cards strong {
+      font-size: 8px;
+    }
+
+    .web-blueprint-cards small {
+      display: none;
+    }
+
+    .web-browser-status {
+      display: none;
     }
 
     .product-spotlight {
@@ -567,6 +1164,13 @@ const capabilities = [
     .product-ui-modules > div {
       min-height: 96px;
       padding: 9px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .capability-grid,
+    .process-section .process-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>

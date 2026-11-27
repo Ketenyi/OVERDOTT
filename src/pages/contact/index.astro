@@ -23,7 +23,7 @@ const velldotSignupUrl = velldotAppUrl
   : '';
 ---
 
-<BaseLayout title="Contact Overdott | Software, Cybersecurity & IT" description="Tell Overdott about your software project, cybersecurity requirement, technology product or Velldot ERP trial.">
+<BaseLayout title="Contact Overdott | Website, Software & IT Projects" description="Discuss a corporate website, web application, software project, cybersecurity requirement, technology product or Velldot ERP trial with Overdott.">
   <section class="page-hero page-hero-split">
     <div class="page-width page-hero-inner">
       <div class="page-hero-copy">
@@ -94,17 +94,17 @@ const velldotSignupUrl = velldotAppUrl
           <label for="service">Service of interest *</label>
           <select id="service" name="service" required>
             <option value="" disabled selected>Select a service</option>
+            <option>Website development</option>
+            <option>Software and business applications</option>
             <option>Velldot ERP trial</option>
             <option>Velldot ERP purchase</option>
             <option>Velldot ERP sales consultation</option>
             <option>Velldot ERP documentation</option>
             <option>Velldot ERP support</option>
-            <option>Software and business applications</option>
             <option>Cybersecurity and digital trust</option>
             <option>IT infrastructure and systems integration</option>
             <option>Cloud, productivity and IT management</option>
             <option>Technology procurement</option>
-            <option>Website development</option>
             <option>Digital marketing</option>
             <option>Other enquiry</option>
           </select>
@@ -170,6 +170,13 @@ const velldotSignupUrl = velldotAppUrl
 
 <script>
   const serviceByInterest: Record<string, string> = {
+    'website-development': 'Website development',
+    'software-development': 'Software and business applications',
+    'digital-marketing': 'Digital marketing',
+    'infrastructure': 'IT infrastructure and systems integration',
+    'cybersecurity': 'Cybersecurity and digital trust',
+    'cloud-it-management': 'Cloud, productivity and IT management',
+    'technology-procurement': 'Technology procurement',
     'velldot-trial': 'Velldot ERP trial',
     'velldot-purchase': 'Velldot ERP purchase',
     'velldot-sales': 'Velldot ERP sales consultation',

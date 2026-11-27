@@ -58,7 +58,7 @@ const isInnerPage = path !== '/' && !path.startsWith('/velldot');
       name: companyName,
       url: siteUrl,
       logo: new URL('/brand/overdott-logo.png', siteUrl).toString(),
-      description: 'Software development, technology sourcing, systems integration, IT services and cybersecurity solutions for businesses.',
+      description: 'Corporate website and web application development, business software, technology sourcing, IT infrastructure, cloud and cybersecurity solutions for organizations.',
       email: contactEmail,
       telephone: whatsappDisplay,
       contactPoint: {
@@ -81,10 +81,15 @@ const isInnerPage = path !== '/' && !path.startsWith('/velldot');
       const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-button]');
       const navigation = document.querySelector<HTMLElement>('[data-navigation]');
       const header = document.querySelector<HTMLElement>('.site-header');
+      const dropdowns = [...document.querySelectorAll<HTMLDetailsElement>('[data-nav-dropdown]')];
 
       const setMenu = (open: boolean) => {
         menuButton?.setAttribute('aria-expanded', String(open));
         navigation?.classList.toggle('is-open', open);
+      };
+
+      const closeDropdowns = () => {
+        dropdowns.forEach((dropdown) => { dropdown.open = false; });
       };
 
       menuButton?.addEventListener('click', () => {
@@ -92,24 +97,36 @@ const isInnerPage = path !== '/' && !path.startsWith('/velldot');
       });
 
       navigation?.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => setMenu(false));
+        link.addEventListener('click', () => {
+          setMenu(false);
+          closeDropdowns();
+        });
       });
 
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
+        const openDropdown = dropdowns.find((dropdown) => dropdown.open);
+        if (event.key === 'Escape' && openDropdown) {
+          openDropdown.open = false;
+          openDropdown.querySelector('summary')?.focus();
+        } else if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
           setMenu(false);
           menuButton.focus();
         }
       });
 
       document.addEventListener('click', (event) => {
-        if (menuButton?.getAttribute('aria-expanded') === 'true' && header && !header.contains(event.target as Node)) {
+        const target = event.target as Node;
+        if (header && !header.contains(target)) {
           setMenu(false);
+          closeDropdowns();
+        }
+        if (dropdowns.some((dropdown) => dropdown.open && !dropdown.contains(target))) {
+          closeDropdowns();
         }
       });
 
       window.addEventListener('resize', () => {
-        if (window.innerWidth > 820) setMenu(false);
+        if (window.innerWidth > 980) setMenu(false);
       });
     </script>
   </body>

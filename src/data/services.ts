@@ -60,13 +60,14 @@ export const services: Service[] = [
     ], related: ['infrastructure', 'cloud-it-management', 'cybersecurity'],
   },
   {
-    slug: 'website-development', category: 'Digital services', title: 'Website design and development',
-    summary: 'Plan and build a responsive, accessible website with clear content and a maintainable foundation.',
+    slug: 'website-development', category: 'Digital services', title: 'Corporate website and web application development',
+    summary: 'Build a credible corporate website, focused landing page or web application with clear content, responsive design and a maintainable foundation.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85',
-    problems: ['Your website does not clearly explain your offer.', 'Pages are difficult to use on a phone.', 'Content or enquiry paths are unclear.', 'The site is difficult to update or maintain.'],
-    capabilities: ['Content structure and page planning', 'Responsive website design and development', 'Accessibility-conscious layouts and navigation', 'Technical SEO foundations', 'Website maintenance enquiries'],
+    problems: ['Your website does not clearly explain your offer to corporate buyers.', 'The experience feels outdated or difficult to use on a phone.', 'Content, services and enquiry paths are unclear.', 'Your site is difficult to update, extend or integrate.'],
+    capabilities: ['Corporate websites and company profiles', 'Campaign landing pages and conversion journeys', 'Responsive, accessible design and development', 'Web applications and customer portal enquiries', 'Content management and maintainable page structures', 'Technical SEO foundations and analytics planning', 'Testing, handover and website maintenance options'],
     faqs: [
       { question: 'Can you help with content?', answer: 'Content structure and copywriting can be discussed during project planning. Deliverables are defined in the scope.' },
+      { question: 'Can you build more than a brochure website?', answer: 'Yes. Landing pages, web applications and customer portal requirements can be explored. Scope, integrations and ownership are agreed before development.' },
       { question: 'Will the website work on mobile?', answer: 'Responsive layouts are part of the proposed approach. Devices and user journeys should be included in acceptance testing.' },
       { question: 'Do you promise search rankings?', answer: 'No. Technical SEO foundations can be implemented, but rankings depend on many factors and are not guaranteed.' },
     ], related: ['software-development', 'digital-marketing', 'cloud-it-management'],
