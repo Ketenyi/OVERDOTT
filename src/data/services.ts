@@ -222,7 +222,7 @@ export const services: Service[] = [
     faqs: [
       { question: 'Can you work with our existing equipment?', answer: 'Yes. An engagement can start with a review of your current environment and compatibility needs before any replacement is proposed.' },
       { question: 'Do you supply equipment as well as install it?', answer: 'Technology sourcing and integration can be scoped together. Availability, licensing and procurement terms are confirmed for each enquiry.' },
-      { question: 'Do you advertise vendor partnership status?', answer: 'No vendor partnership or authorization is claimed on this website. Relevant technologies are listed only as delivery areas, and any status must be verified separately.' },
+      { question: 'How do you confirm technology fit?', answer: 'We review compatibility, support and deployment requirements before recommending an option. Relevant technologies are listed as delivery areas, not as a statement about every product or deployment.' },
       { question: 'Do you offer ongoing support?', answer: 'Support can be discussed and documented as part of a proposal. Coverage depends on the agreed scope.' },
     ],
     related: ['cybersecurity', 'cloud-it-management', 'technology-procurement'],
@@ -278,7 +278,7 @@ export const services: Service[] = [
     ],
     faqs: [
       { question: 'Can you work with our current cloud provider?', answer: 'An engagement can begin with your existing provider, subscriptions and configuration. Proposed changes depend on the initial review.' },
-      { question: 'Do you provide Microsoft 365 support?', answer: 'Microsoft 365 configuration and productivity assistance can be scoped. No Microsoft partnership or reseller status is claimed.' },
+      { question: 'Can Overdott help with Microsoft 365?', answer: 'Yes. Configuration and productivity assistance can be scoped around your subscriptions, users and requirements.' },
       { question: 'Can management be ongoing?', answer: 'Ongoing administration can be considered where a suitable support scope is agreed. No service level is implied without written agreement.' },
     ],
     related: ['infrastructure', 'cybersecurity', 'website-development'],
@@ -304,7 +304,7 @@ export const services: Service[] = [
       'Integration and implementation coordination',
     ],
     faqs: [
-      { question: 'Are you an authorized reseller?', answer: 'No vendor authorization is claimed on this website. Product availability, sourcing arrangements and any vendor status should be verified for each enquiry.' },
+      { question: 'How do product enquiries work?', answer: 'We start with your requirements, compatibility and licensing needs, then confirm availability and sourcing arrangements for the enquiry.' },
       { question: 'Can I ask about one product?', answer: 'Yes. Share the product or outcome you have in mind along with compatibility and licensing requirements.' },
       { question: 'Do you sell directly online?', answer: 'This website accepts product enquiries rather than online checkout. Availability and terms are confirmed individually.' },
     ],
