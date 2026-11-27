@@ -1,0 +1,21 @@
+---
+interface Props {
+  variant?: 'color' | 'white';
+  width?: number;
+  class?: string;
+}
+
+const { variant = 'color', width = 184, class: className = '' } = Astro.props;
+const src = variant === 'white' ? '/brand/overdott-logo-white.png' : '/brand/overdott-logo.png';
+const height = Math.round((width * 247) / 1228);
+---
+
+<img
+  class={`brand-logo ${className}`}
+  src={src}
+  alt="Overdott"
+  width={width}
+  height={height}
+  style={`--logo-width: ${width}px`}
+  fetchpriority="high"
+/>

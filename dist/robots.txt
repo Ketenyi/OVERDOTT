@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /contact/success/
+Sitemap: https://overdott.example/sitemap.xml

@@ -1,6 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { whatsappNumber } from '../config';
+
+const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 ---
-<BaseLayout title="Page Not Found | Overdott Technologies" description="The page you are looking for could not be found." noindex={true}>
-  <section class="section page-width" style="min-height:56vh;padding-top:110px"><p class="eyebrow">404 · Page not found</p><h1 style="max-width:760px">That page isn't available.</h1><p>It may have moved, or the address may be incorrect.</p><p style="margin-top:28px"><a class="button" href="/">Return to home <span aria-hidden="true">→</span></a></p></section>
+
+<BaseLayout
+  title="Page Not Found | Overdott Technologies"
+  description="The page you are looking for could not be found."
+  noindex={true}
+>
+  <section class="section section-compact error-page page-width" aria-labelledby="error-title">
+    <p class="error-code" aria-hidden="true">404</p>
+    <div class="error-copy">
+      <h1 id="error-title">That page isn't available.</h1>
+      <p>It may have moved, or the address may be incorrect. Try one of these pages instead.</p>
+    </div>
+    <nav class="error-links" aria-label="Helpful links">
+      <a class="button" href="/">Home <span aria-hidden="true">→</span></a>
+      <a class="button button-outline-dark" href="/solutions/">Solutions <span aria-hidden="true">→</span></a>
+      <a class="button button-outline-dark" href="/products/">Products <span aria-hidden="true">→</span></a>
+      <a class="button button-outline-dark" href="/contact/">Contact <span aria-hidden="true">→</span></a>
+      <a class="text-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+        Chat on WhatsApp <span aria-hidden="true">↗</span>
+      </a>
+    </nav>
+  </section>
 </BaseLayout>

@@ -1,0 +1,22 @@
+---
+const resolveAppUrl = (value: string | undefined) => {
+  const trimmed = value?.trim();
+  if (!trimmed) return null;
+
+  try {
+    const url = new URL(trimmed);
+    return ['http:', 'https:'].includes(url.protocol) ? url : null;
+  } catch {
+    return null;
+  }
+};
+
+const appUrl =
+  resolveAppUrl(import.meta.env.PUBLIC_VELLDOT_URL) ??
+  resolveAppUrl(import.meta.env.PUBLIC_SORA_URL);
+const documentationUrl = appUrl
+  ? new URL('/documentation/', appUrl).toString()
+  : '/contact/?interest=velldot-documentation#enquiry';
+
+return Astro.redirect(documentationUrl, 302);
+---

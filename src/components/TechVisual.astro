@@ -1,0 +1,212 @@
+---
+const layers = [
+  ['01', 'Digital solutions', 'Websites, applications and integrations'],
+  ['02', 'Business systems', 'Workflows, data and automation'],
+  ['03', 'Technology foundation', 'Infrastructure, security and support'],
+];
+---
+
+<div
+  class="tech-visual"
+  role="img"
+  aria-label="An Overdott systems view connecting digital solutions, business systems and the technology foundation to your business."
+>
+  <div class="schematic-head">
+    <span>Overdott / Systems view</span>
+    <span>01—03</span>
+  </div>
+
+  <div class="schematic-root">
+    <img src="/brand/overdott-mark-white.png" alt="" width="46" height="46" />
+    <div>
+      <strong>Your business</strong>
+      <small>People · processes · information</small>
+    </div>
+  </div>
+
+  <div class="schematic-connector" aria-hidden="true">
+    <span></span>
+    <small>One practical technology perspective</small>
+    <span></span>
+  </div>
+
+  <div class="schematic-layers">
+    {layers.map(([number, title, detail]) => (
+      <div class="schematic-layer">
+        <span>{number}</span>
+        <div>
+          <strong>{title}</strong>
+          <small>{detail}</small>
+        </div>
+        <i aria-hidden="true">↗</i>
+      </div>
+    ))}
+  </div>
+
+  <div class="schematic-foot">
+    <span>Understand</span><i>→</i><span>Recommend</span><i>→</i><span>Deliver</span><i>→</i><span>Improve</span>
+  </div>
+</div>
+
+<style>
+  .tech-visual {
+    width: 100%;
+    max-width: 540px;
+    min-width: 0;
+    margin-inline: auto;
+    padding: 21px;
+    border: 1px solid rgba(183, 205, 235, 0.24);
+    border-radius: 4px;
+    color: #fff;
+    background: #0c1a2d;
+  }
+
+  .schematic-head,
+  .schematic-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: #8ea5bf;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .schematic-head {
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .schematic-root {
+    display: flex;
+    padding: 24px 0 20px;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .schematic-root img {
+    width: 46px;
+    height: 46px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #fff;
+  }
+
+  .schematic-root > div,
+  .schematic-layer > div {
+    display: grid;
+    gap: 3px;
+  }
+
+  .schematic-root strong {
+    color: #fff;
+    font-family: var(--heading);
+    font-size: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .schematic-root small {
+    color: #93a8c1;
+    font-size: 10px;
+  }
+
+  .schematic-connector {
+    display: flex;
+    padding: 3px 0 14px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .schematic-connector > span {
+    height: 1px;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .schematic-connector small {
+    color: #7f95af;
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .schematic-layers {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .schematic-layer {
+    display: grid;
+    min-height: 78px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 13px;
+  }
+
+  .schematic-layer > span {
+    color: #79a9e8;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
+
+  .schematic-layer strong {
+    color: #edf3fb;
+    font-family: var(--heading);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .schematic-layer small {
+    color: #8ea3bc;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .schematic-layer i {
+    color: #79a9e8;
+    font-size: 15px;
+    font-style: normal;
+  }
+
+  .schematic-foot {
+    padding-top: 17px;
+    justify-content: flex-start;
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+
+  .schematic-foot i {
+    color: #5279a9;
+    font-size: 10px;
+    font-style: normal;
+  }
+
+  @media (max-width: 520px) {
+    .tech-visual {
+      padding: 17px;
+    }
+
+    .schematic-root {
+      padding-block: 19px 17px;
+    }
+
+    .schematic-layer {
+      min-height: 72px;
+      gap: 9px;
+    }
+
+    .schematic-connector small {
+      font-size: 7px;
+    }
+
+    .schematic-foot {
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+  }
+</style>

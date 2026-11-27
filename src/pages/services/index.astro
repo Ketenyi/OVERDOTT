@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { servicePillars } from '../../data/services';
+import { whatsappNumber } from '../../config';
+
+const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+const sectionIds: Record<string, string> = {
+  digital: 'digital-solutions',
+  automation: 'business-systems',
+  infrastructure: 'it-infrastructure',
+};
+---
+
+<BaseLayout
+  title="Technology Services | Digital, Automation & IT | Overdott"
+  description="Explore Overdott's digital solutions, business systems, workflow automation and IT infrastructure services for businesses in Kenya."
+>
+  <section class="page-hero page-hero-split">
+    <div class="page-width page-hero-inner">
+      <div class="page-hero-copy">
+        <p class="eyebrow">Our services</p>
+        <h1>Technology solutions designed around your business.</h1>
+        <p>Every business has different technology needs. We provide practical development, automation and infrastructure services to help organizations operate more effectively.</p>
+        <div class="hero-actions">
+          <a class="button" href="/contact/">Talk to Overdott <span aria-hidden="true">↗</span></a>
+          <a class="button button-outline" href="/solutions/">Explore solutions <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <aside class="page-hero-aside" aria-label="Three primary service areas">
+        <div class="hero-panel">
+          <p class="hero-panel-label">Three connected service areas</p>
+          <div class="hero-panel-list">
+            {servicePillars.map((pillar) => (
+              <a class="hero-panel-row" href={`/services/#${sectionIds[pillar.id]}`}>
+                <strong>{pillar.number} / {pillar.shortTitle}</strong>
+                <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {servicePillars.map((pillar, pillarIndex) => (
+    <section class={`section ${pillarIndex % 2 === 1 ? 'section-tint' : ''}`} id={sectionIds[pillar.id]}>
+      <div class="page-width">
+        <div class="section-topline service-pillar-topline">
+          <div class="section-heading">
+            <p class="eyebrow">Service {pillar.number}</p>
+            <h2>{pillar.title}</h2>
+            <p>{pillar.description}</p>
+          </div>
+          <a class="text-link" href={pillar.href}>Explore {pillar.shortTitle} <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="service-offering-grid">
+          {pillar.services.map((service, index) => (
+            <article class="service-offering">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="service-outcomes">
+          <div>
+            <p class="eyebrow">Business outcomes</p>
+            <h3>What this can help you achieve</h3>
+          </div>
+          <ul class="check-list">
+            {pillar.outcomes.map((outcome) => <li>{outcome}</li>)}
+          </ul>
+        </div>
+
+        <div class="service-starting-points">
+          <div>
+            <span>{pillar.startingPointsLabel}</span>
+            <p>Specific scope, technologies, availability and delivery arrangements are confirmed after understanding your requirements.</p>
+          </div>
+          <div class="package-list">
+            {pillar.startingPoints.map((item) => <span>{item}</span>)}
+          </div>
+          <a class="button button-small" href={`/contact/?interest=${pillar.interest}`}>{pillar.cta} <span aria-hidden="true">↗</span></a>
+        </div>
+
+        {pillar.technologies && (
+          <div class="technology-note">
+            <strong>Relevant technologies may include</strong>
+            <span>{pillar.technologies.join(' · ')}</span>
+            <small>Relevant technologies are listed as delivery areas. Final capability and delivery arrangements are confirmed against the agreed scope.</small>
+          </div>
+        )}
+      </div>
+    </section>
+  ))}
+
+  <section class="section section-dark">
+    <div class="page-width solution-principle">
+      <div>
+        <p class="eyebrow">A practical starting point</p>
+        <h2>Custom work, available solutions and product initiatives are not the same thing.</h2>
+      </div>
+      <div>
+        <p>We distinguish between bespoke development, established third-party solutions and products still in development. The right option depends on your process, budget, timeline and ownership requirements.</p>
+        <a class="text-link web-text-link" href="/solutions/">See common solution scenarios <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="page-width cta-inner">
+      <div>
+        <p class="eyebrow">Start a conversation</p>
+        <h2>Not sure which service is right for your business?</h2>
+        <p>Tell us about your challenge. We can help you identify an appropriate technology solution.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="button button-light" href="/contact/">Talk to Overdott <span aria-hidden="true">↗</span></a>
+        <a class="button button-outline" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

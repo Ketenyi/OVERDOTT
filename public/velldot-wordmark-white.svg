@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 150" fill="none">
+  <defs>
+    <linearGradient id="v" x1="12" y1="18" x2="130" y2="132" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#087BFF"/>
+      <stop offset="1" stop-color="#2025E8"/>
+    </linearGradient>
+  </defs>
+  <path d="M35 23h23c7 0 12 3 16 10l24 43 20-32h27l-37 62c-7 12-16 18-29 18-14 0-23-8-31-21L3 23h32Z" fill="url(#v)"/>
+  <circle cx="120" cy="22" r="15" fill="#087BFF"/>
+  <text x="168" y="112" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="106" font-weight="700" letter-spacing="-5">Velldot</text>
+</svg>
