@@ -6,8 +6,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <section class="section page-width success-page">
     <div class="success-mark" aria-hidden="true">✓</div>
     <p class="eyebrow">Enquiry submitted</p>
-    <h1 id="success-title">Thank you for getting in touch.</h1>
-    <p id="success-copy">We have received your enquiry and will follow up using your preferred contact method.</p>
+    <h1 id="success-title">Thank you for contacting Overdott Technologies.</h1>
+    <p id="success-copy">Your enquiry has been received. We’ll review your requirements and follow up using the contact details you provided.</p>
     <div class="hero-actions">
       <a class="button" id="success-primary" href="/">
         <span id="success-primary-label">Back to home</span> <span aria-hidden="true">→</span>
@@ -20,8 +20,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <script>
   const interest = new URLSearchParams(window.location.search).get('interest');
   const isVelldot = interest?.startsWith('velldot-') ?? false;
-  const isTrial = interest === 'velldot-trial';
-  const isPurchase = interest === 'velldot-purchase';
 
   if (isVelldot) {
     const title = document.querySelector<HTMLHeadingElement>('#success-title');
@@ -29,19 +27,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     const primary = document.querySelector<HTMLAnchorElement>('#success-primary');
     const primaryLabel = document.querySelector<HTMLSpanElement>('#success-primary-label');
 
-    if (title) title.textContent = isTrial
-      ? 'Your Velldot trial request is with us.'
-      : isPurchase
-        ? 'Your Velldot purchase enquiry is with us.'
-        : 'Your Velldot enquiry is with us.';
-    if (copy) copy.textContent = 'We’ll review your requirements and follow up using your preferred contact method with the right next step.';
+    if (title) title.textContent = 'Your Velldot enquiry is with us.';
+    if (copy) copy.textContent = 'We’ll review your requirements and follow up using the contact details you provided. Product availability, deployment and next steps will be confirmed during that conversation.';
     if (primary) primary.href = '/velldot/';
-    if (primaryLabel) primaryLabel.textContent = 'Explore Velldot ERP';
-    document.title = isTrial
-      ? 'Velldot Trial Enquiry Received | Overdott Technologies'
-      : isPurchase
-        ? 'Velldot Purchase Enquiry Received | Overdott Technologies'
-        : 'Velldot Enquiry Received | Overdott Technologies';
+    if (primaryLabel) primaryLabel.textContent = 'Explore Velldot';
+    document.title = 'Velldot Enquiry Received | Overdott Technologies';
   }
 </script>
 

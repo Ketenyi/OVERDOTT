@@ -54,11 +54,10 @@ $email = clean_text($_POST['email'] ?? '', 180);
 $phone = clean_text($_POST['phone'] ?? '', 60);
 $service = clean_text($_POST['service'] ?? '', 140);
 $description = clean_text($_POST['description'] ?? '', 5000);
-$preferredContact = clean_text($_POST['preferred-contact'] ?? '', 40);
 $consent = clean_text($_POST['privacy-consent'] ?? '', 10);
 $interest = clean_text($_POST['interest'] ?? '', 60);
 
-if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || $service === '' || $description === '' || $preferredContact === '' || $consent !== 'yes') {
+if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || $service === '' || $description === '' || $consent !== 'yes') {
     redirect_with_status('error', $interest);
 }
 
@@ -69,6 +68,19 @@ if (mb_strlen($description, 'UTF-8') < 10) {
 $allowedInterests = [
     '',
     'general',
+    'digital-development',
+    'business-automation',
+    'it-infrastructure',
+    'website-development',
+    'software-development',
+    'infrastructure',
+    'cybersecurity',
+    'cloud-it-management',
+    'technology-procurement',
+    'digital-marketing',
+    'velldot',
+    'velldot-early-access',
+    'velldot-deployment',
     'velldot-trial',
     'velldot-purchase',
     'velldot-sales',
@@ -94,7 +106,6 @@ $body = implode("\n", [
     'Phone: ' . ($phone !== '' ? $phone : 'Not provided'),
     'Service: ' . $service,
     'Interest: ' . ($interest !== '' ? $interest : 'general'),
-    'Preferred contact: ' . $preferredContact,
     '',
     'Message:',
     $description,

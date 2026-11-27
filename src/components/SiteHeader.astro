@@ -1,10 +1,17 @@
 ---
 import BrandLogo from './BrandLogo.astro';
-import { coreServices, digitalServices } from '../data/services';
+import { findService, servicePillars } from '../data/services';
 
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const popularServices = [
+  'website-development',
+  'software-development',
+  'infrastructure',
+  'cybersecurity',
+].map(findService).filter((service) => service !== undefined);
+
 const links = [
-  { href: '/services/website-development/', label: 'Web development' },
+  { href: '/solutions/', label: 'Solutions' },
   { href: '/products/', label: 'Products' },
   { href: '/about/', label: 'About' },
   { href: '/insights/', label: 'Insights' },
@@ -16,11 +23,10 @@ const isActive = (href: string) => {
   return path === target || path.startsWith(`${target}/`);
 };
 
-const solutionsActive = path === '/solutions'
-  || path.startsWith('/solutions/')
+const servicesActive = path === '/services'
+  || path.startsWith('/services/')
   || path === '/digital-services'
-  || path.startsWith('/digital-services/')
-  || (path.startsWith('/services/') && path !== '/services/website-development');
+  || path.startsWith('/digital-services/');
 ---
 
 <header class="site-header">
@@ -42,35 +48,35 @@ const solutionsActive = path === '/solutions'
 
     <nav id="primary-navigation" class="primary-navigation" aria-label="Main navigation" data-navigation>
       <div class="nav-links">
-        <details class="nav-dropdown" data-nav-dropdown data-active={solutionsActive ? 'true' : undefined}>
-          <summary class="nav-dropdown-trigger" aria-controls="solutions-menu">
-            Solutions
+        <details class="nav-dropdown" data-nav-dropdown data-active={servicesActive ? 'true' : undefined}>
+          <summary class="nav-dropdown-trigger" aria-controls="services-menu" aria-current={servicesActive ? 'page' : undefined}>
+            Services
             <svg class="nav-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </summary>
-          <div class="mega-menu" id="solutions-menu">
+          <div class="mega-menu" id="services-menu">
             <div class="mega-menu-inner page-width">
               <div class="mega-menu-heading">
-                <p class="eyebrow">Connected expertise</p>
-                <h2>Technology that works as one.</h2>
-                <p>From your website to the systems behind it, we help connect requirements, delivery and long-term ownership.</p>
-                <a class="text-link" href="/solutions/">Explore all solutions <span aria-hidden="true">→</span></a>
+                <p class="eyebrow">Technology. Built for Business.</p>
+                <h2>Practical solutions, connected around your needs.</h2>
+                <p>From your website to the systems behind it, we help businesses simplify operations, improve visibility and grow with confidence.</p>
+                <a class="text-link" href="/services/">Explore all services <span aria-hidden="true">→</span></a>
               </div>
 
               <div class="mega-menu-columns">
                 <div>
-                  <p class="mega-menu-label">Technology solutions</p>
-                  {coreServices.map((service) => (
-                    <a class="mega-menu-link" href={`/services/${service.slug}/`}>
-                      <strong>{service.title}</strong>
-                      <span>{service.summary}</span>
+                  <p class="mega-menu-label">Primary service areas</p>
+                  {servicePillars.map((pillar) => (
+                    <a class="mega-menu-link" href={pillar.href}>
+                      <strong>{pillar.title}</strong>
+                      <span>{pillar.summary}</span>
                     </a>
                   ))}
                 </div>
                 <div>
-                  <p class="mega-menu-label">Digital services</p>
-                  {digitalServices.map((service) => (
+                  <p class="mega-menu-label">Popular capabilities</p>
+                  {popularServices.map((service) => service && (
                     <a class="mega-menu-link" href={`/services/${service.slug}/`}>
                       <strong>{service.title}</strong>
                       <span>{service.summary}</span>
@@ -81,9 +87,9 @@ const solutionsActive = path === '/solutions'
 
               <a class="mega-menu-feature" href="/velldot/">
                 <span class="mega-feature-mark"><img src="/velldot-mark.svg" alt="" width="34" height="34" /></span>
-                <small>Owned product</small>
-                <strong>Velldot ERP</strong>
-                <span>Modular business software for connected operations.</span>
+                <small>Product initiative by Overdott</small>
+                <strong>Velldot business software</strong>
+                <span>Explore ERP capabilities, product plans and deployment enquiries.</span>
                 <b>Explore Velldot <span aria-hidden="true">↗</span></b>
               </a>
             </div>
@@ -96,7 +102,7 @@ const solutionsActive = path === '/solutions'
       </div>
 
       <a class="button button-small header-cta" href="/contact/">
-        Start a project <span aria-hidden="true">↗</span>
+        Let’s discuss <span aria-hidden="true">↗</span>
       </a>
     </nav>
   </div>

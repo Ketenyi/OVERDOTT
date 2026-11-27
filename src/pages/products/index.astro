@@ -3,46 +3,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { whatsappDisplay, whatsappNumber } from '../../config';
 
 const categories = [
-  ['Servers, storage and networking', 'Hardware enquiries for infrastructure needs, with compatibility and deployment considerations.'],
-  ['Cybersecurity software', 'Enquiries about endpoint, identity, email and network security options.'],
+  ['Servers, storage and networking', 'Infrastructure enquiries with compatibility, deployment and support considerations.'],
+  ['Cybersecurity software', 'Requirements for endpoint, identity, email and network security options.'],
   ['Endpoint and IT management', 'Tools for device management, patching, monitoring and IT asset visibility.'],
   ['Cloud and productivity software', 'Cloud infrastructure, collaboration and productivity licensing enquiries.'],
   ['Backup and disaster recovery', 'Options for data protection, recovery planning and business continuity.'],
-  ['Business software and ERP', 'Business application enquiries subject to confirmed product availability and scope.'],
+  ['Business software and ERP', 'Business application options alongside the Velldot product initiative, subject to confirmed scope and availability.'],
 ];
-
-const resolveAppUrl = (value: string | undefined) => {
-  const trimmed = value?.trim();
-  if (!trimmed) return null;
-
-  try {
-    const url = new URL(trimmed);
-    return ['http:', 'https:'].includes(url.protocol) ? url : null;
-  } catch {
-    return null;
-  }
-};
-const velldotAppUrl =
-  resolveAppUrl(import.meta.env.PUBLIC_VELLDOT_URL) ??
-  resolveAppUrl(import.meta.env.PUBLIC_SORA_URL);
-const velldotPricingUrl = velldotAppUrl
-  ? new URL('/pricing', velldotAppUrl).toString()
-  : '/contact/?interest=velldot-purchase#enquiry';
 ---
 
-<BaseLayout title="Software Products & Technology Sourcing | Overdott" description="Explore Velldot ERP and enquire about hardware, software, cloud, cybersecurity and business application options from Overdott.">
+<BaseLayout title="Software Products & Technology Sourcing | Overdott" description="Explore the Velldot product initiative and enquire about software, cloud, cybersecurity and infrastructure requirements from Overdott.">
   <section class="page-hero page-hero-split">
     <div class="page-width page-hero-inner">
       <div class="page-hero-copy">
         <p class="eyebrow">Products and technology sourcing</p>
         <h1>Find technology that fits your requirements.</h1>
-        <p>Explore our own business software or tell us what you need to source, license and implement.</p>
+        <p>Explore our own product initiative or tell us what you need to source, license and implement around your business.</p>
       </div>
       <aside class="page-hero-aside" aria-label="Product areas">
         <div class="hero-panel">
           <p class="hero-panel-label">What we can help with</p>
           <div class="hero-panel-grid">
-            <div class="hero-panel-item"><small>Owned product</small><strong>Velldot ERP</strong></div>
+            <div class="hero-panel-item"><small>Product initiative</small><strong>Velldot</strong></div>
             <div class="hero-panel-item"><small>Software</small><strong>Licensing</strong></div>
             <div class="hero-panel-item"><small>Infrastructure</small><strong>Hardware</strong></div>
             <div class="hero-panel-item"><small>Security</small><strong>Controls</strong></div>
@@ -55,18 +37,18 @@ const velldotPricingUrl = velldotAppUrl
   <section class="section page-width">
     <div class="product-directory-feature">
       <div class="product-directory-copy">
-        <img src="/velldot-wordmark.svg" alt="Velldot ERP" width="190" height="44" />
-        <p class="eyebrow">Business software by Overdott</p>
-        <h2>One workspace for the way your organization works.</h2>
-        <p>Velldot ERP connects projects, finance, procurement, sales, people, inventory and service operations through licensed modules and separate organization workspaces.</p>
+        <img src="/velldot-wordmark.svg" alt="Velldot" width="190" height="44" />
+        <p class="eyebrow">A product initiative by Overdott</p>
+        <h2>Business software designed around the way businesses work.</h2>
+        <p>Velldot ERP brings verified modules for projects, finance, procurement, sales, HR, inventory and service operations into an integrated business management platform. HR and Projects are also being developed as standalone product initiatives.</p>
         <ul class="check-list">
-          <li>Start with a no-card trial</li>
-          <li>Scale with the modules your team needs</li>
-          <li>Purchase and renewal options include M-Pesa when configured</li>
+          <li>Review verified ERP capabilities and limitations</li>
+          <li>Register interest for early access or a product discussion</li>
+          <li>Confirm deployment, licensing and support requirements by enquiry</li>
         </ul>
         <div class="hero-actions">
-          <a class="button" href="/velldot/">Explore Velldot ERP <span aria-hidden="true">→</span></a>
-          <a class="button button-outline-dark" href={velldotPricingUrl}>{velldotAppUrl ? 'View pricing & purchase' : 'Ask about purchasing'} <span aria-hidden="true">↗</span></a>
+          <a class="button" href="/velldot/">Explore Velldot <span aria-hidden="true">→</span></a>
+          <a class="button button-outline-dark" href="/contact/?interest=velldot-deployment#enquiry">Discuss deployment &amp; licensing <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <div class="product-directory-visual" aria-hidden="true">
@@ -86,7 +68,7 @@ const velldotPricingUrl = velldotAppUrl
       <div class="section-heading">
         <p class="eyebrow">Technology categories</p>
         <h2>Start with what the organization needs to do.</h2>
-        <p>This is an enquiry directory, not a general online store. Availability, pricing, licensing and sourcing arrangements are confirmed individually.</p>
+        <p>This is an enquiry directory, not a general online store. Availability, pricing, licensing and sourcing arrangements are confirmed individually. No vendor partnership or reseller status is implied.</p>
       </div>
       <div class="directory-grid">
         {categories.map(([title, description]) => (
@@ -105,7 +87,7 @@ const velldotPricingUrl = velldotAppUrl
       </div>
       <div class="cta-actions">
         <a class="button button-light" href="/contact/">Make a product enquiry <span aria-hidden="true">↗</span></a>
-        <a class="button button-light" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">WhatsApp {whatsappDisplay} <span aria-hidden="true">↗</span></a>
+        <a class="button button-outline" href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noopener noreferrer">WhatsApp {whatsappDisplay} <span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>

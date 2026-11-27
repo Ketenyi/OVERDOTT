@@ -3,7 +3,7 @@ import { insights } from '../data/insights';
 import { services } from '../data/services';
 import { siteUrl } from '../config';
 
-const staticPaths = ['/', '/about/', '/solutions/', '/digital-services/', '/products/', '/velldot/', '/insights/', '/contact/', '/privacy/'];
+const staticPaths = ['/', '/services/', '/about/', '/solutions/', '/digital-services/', '/products/', '/velldot/', '/insights/', '/contact/', '/privacy/'];
 
 export const GET: APIRoute = () => {
   const origin = siteUrl.replace(/\/$/, '');

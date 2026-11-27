@@ -18,18 +18,17 @@ const appUrl =
   resolveAppUrl(import.meta.env.PUBLIC_SORA_URL);
 const appConfigured = Boolean(appUrl);
 const appPath = (path: string) => (appUrl ? new URL(path, appUrl).toString() : '');
-const externalLinkProps = appConfigured ? { target: '_blank', rel: 'noopener' } : {};
+const externalLinkProps = appConfigured ? { target: '_blank', rel: 'noopener noreferrer' } : {};
 
-const signupUrl = appPath('/signup') || '/contact/?interest=velldot-trial#enquiry';
-const pricingUrl = appPath('/pricing') || '/contact/?interest=velldot-purchase#enquiry';
+const earlyAccessUrl = '/contact/?interest=velldot-early-access#enquiry';
+const deploymentUrl = '/contact/?interest=velldot-deployment#enquiry';
 const documentationUrl =
   appPath('/documentation/') || '/contact/?interest=velldot-documentation#enquiry';
 const appContactUrl =
   appPath('/contact') || '/contact/?interest=velldot-contact#enquiry';
-const talkToSalesUrl = '/contact/?interest=velldot-sales#enquiry';
 
-const trialCtaLabel = appConfigured ? 'Start your trial' : 'Enquire about a trial';
-const purchaseCtaLabel = appConfigured ? 'View pricing & purchase' : 'Enquire about purchase';
+const earlyAccessCtaLabel = 'Register Interest for Early Access';
+const deploymentCtaLabel = 'Discuss Deployment & Licensing';
 const documentationLabel = appConfigured
   ? 'Explore app documentation'
   : 'Ask about documentation';
@@ -162,17 +161,17 @@ const faqs = [
   {
     question: 'What is Velldot ERP?',
     answer:
-      'Velldot is a web-based ERP built on Django. It brings business functions into modular organization workspaces, with tenant-scoped business rows and separate tools for tenant owners and platform administrators.',
+      'Velldot ERP is a product initiative by Overdott. The verified build is a web-based ERP built on Django, with modular organization workspaces, tenant-scoped business rows and separate tools for tenant owners and platform administrators. Commercial availability is confirmed by enquiry.',
   },
   {
-    question: 'Which business modules are available?',
+    question: 'Which business modules are included in the verified build?',
     answer:
-      'The verified modules are Projects, Finance, Procurement, Sales & CRM, Human Resources, Inventory, Helpdesk, Assets, Point of Sale and Signatures. Module availability depends on the licences and configuration applied to your organization.',
+      'The verified build includes Projects, Finance, Procurement, Sales & CRM, Human Resources, Inventory, Helpdesk, Assets, Point of Sale and Signatures. The modules enabled for an organization depend on licensing and configuration.',
   },
   {
-    question: 'How does the trial and public signup work?',
+    question: 'Can we register for a trial?',
     answer:
-      'Public signup automatically provisions an organization tenant, owner, settings and module licences. The default trial period is configurable and set to 30 days by default; no card is required. If the app URL is not configured on this site, the trial link takes you to Overdott to enquire.',
+      'You can register interest for early access. The verified application includes configurable signup and trial flows, but public access, trial duration and terms depend on the deployment. Overdott confirms whether a trial is available for your requirements.',
   },
   {
     question: 'Who manages users, billing and module licences?',
@@ -182,7 +181,7 @@ const faqs = [
   {
     question: 'How are pricing and payments handled?',
     answer:
-      'Current pricing is confirmed in the app or by Overdott. Authenticated renewal supports Stripe Checkout and M-Pesa STK Push when those payment options are configured. This page does not publish prices or edition names.',
+      'This corporate website does not publish prices or edition names. Pricing, licensing and payment availability are confirmed with Overdott. The verified application supports Stripe Checkout and M-Pesa STK Push for authenticated renewals when those options are configured.',
   },
   {
     question: 'Which Kenya-oriented workflows are supported?',
@@ -226,8 +225,8 @@ const softwareApplicationJsonLd = {
 ---
 
 <BaseLayout
-  title="Velldot ERP | Modular Business Software by Overdott"
-  description="Explore Velldot ERP: modular business software for projects, finance, procurement, sales, HR, inventory, helpdesk, assets, POS and signatures."
+  title="Velldot | Business Software by Overdott"
+  description="Explore Velldot, Overdott's business software initiative, including verified Velldot ERP capabilities and Velldot HR and Projects in development."
   image="/velldot-social.png"
 >
   <script
@@ -249,32 +248,30 @@ const softwareApplicationJsonLd = {
             height="56"
           />
         </a>
-        <p class="eyebrow">Business software by Overdott</p>
-        <h1 id="velldot-hero-title">Your business.<br /><span>One clear workspace.</span></h1>
+        <p class="eyebrow">Introducing Velldot · By Overdott</p>
+        <h1 id="velldot-hero-title">Business software.<br /><span>Simplified.</span></h1>
         <p class="velldot-lead">
-          Bring delivery, finance, customers, people and daily operations into a modular ERP—shaped around what your organization needs.
+          Introducing Velldot — practical business applications for modern organizations. Our software product initiative is focused on simplifying operations, improving visibility and helping organizations manage their resources more effectively.
         </p>
         <div class="velldot-actions">
-          <a class="button" href={signupUrl} {...externalLinkProps}>
-            {trialCtaLabel}
+          <a class="button" href={earlyAccessUrl}>
+            {earlyAccessCtaLabel}
             <span aria-hidden="true">↗</span>
-            {appConfigured && <span class="sr-only"> (opens in a new tab)</span>}
           </a>
-          <a class="button button-outline" href={pricingUrl} {...externalLinkProps}>
-            {purchaseCtaLabel}
+          <a class="button button-outline" href={deploymentUrl}>
+            {deploymentCtaLabel}
             <span aria-hidden="true">↗</span>
-            {appConfigured && <span class="sr-only"> (opens in a new tab)</span>}
           </a>
-          <a class="text-link velldot-text-link-light" href={talkToSalesUrl}>
-            Talk to sales <span aria-hidden="true">→</span>
+          <a class="text-link velldot-text-link-light" href="#portfolio">
+            Explore the portfolio <span aria-hidden="true">→</span>
           </a>
         </div>
         <p class="velldot-trial-note">
           <span aria-hidden="true"></span>
-          30-day trial by default, configurable. No card required.
+          Product initiative by Overdott · Availability confirmed by enquiry.
         </p>
         <p class="velldot-pricing-note">
-          Pricing and payment availability are confirmed in the app or by Overdott.
+          No pricing is published here. Trial access, deployment, licensing and payment options are confirmed individually.
         </p>
       </div>
 
@@ -371,13 +368,47 @@ const softwareApplicationJsonLd = {
     </div>
   </section>
 
-  <section class="velldot-proof-strip" aria-label="Velldot at a glance">
+  <section class="velldot-proof-strip" aria-label="Velldot ERP at a glance">
     <ul class="page-width">
       <li><strong>10 business modules</strong><span>Delivery through signatures</span></li>
       <li><strong>Organization workspaces</strong><span>Tenant-scoped business rows</span></li>
       <li><strong>PDF + CSV</strong><span>Reporting across modules</span></li>
       <li><strong>Kenya workflows</strong><span>eTIMS and M-Pesa, when configured</span></li>
     </ul>
+  </section>
+
+  <section class="section page-width velldot-portfolio" id="portfolio" aria-labelledby="velldot-portfolio-title">
+    <div class="section-heading">
+      <p class="eyebrow">The Velldot portfolio</p>
+      <h2 id="velldot-portfolio-title">One product family. A practical business focus.</h2>
+      <p>Velldot is a proprietary software initiative associated with Overdott. Product status is shown clearly so organizations can distinguish verified capabilities from work still in development.</p>
+    </div>
+    <div class="velldot-portfolio-grid">
+      <article class="velldot-product-card velldot-product-card-featured">
+        <span class="velldot-product-status">Verified ERP build</span>
+        <h3>Velldot ERP</h3>
+        <p>An integrated business management platform designed to bring essential business operations together.</p>
+        <ul class="velldot-product-points">
+          <li>10 verified business modules</li>
+          <li>Modular organization workspaces</li>
+          <li>Deployment and availability by enquiry</li>
+        </ul>
+        <a class="text-link" href="#modules">Explore ERP capabilities <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="velldot-product-card">
+        <span class="velldot-product-status">In development</span>
+        <h3>Velldot HR</h3>
+        <p>A business application initiative focused on employee information and HR processes.</p>
+        <a class="text-link" href={earlyAccessUrl}>Register product interest <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="velldot-product-card">
+        <span class="velldot-product-status">In development</span>
+        <h3>Velldot Projects</h3>
+        <p>A project management application initiative designed to help teams organize work, monitor progress and manage responsibilities.</p>
+        <a class="text-link" href={earlyAccessUrl}>Register product interest <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+    <p class="velldot-portfolio-note">Status labels describe the verified build and current product initiatives; they are not a promise of commercial availability.</p>
   </section>
 
   <section class="section page-width velldot-outcomes" aria-labelledby="velldot-outcomes-title">
@@ -415,7 +446,7 @@ const softwareApplicationJsonLd = {
     </div>
   </section>
 
-  <section class="section section-tint velldot-modules-section" aria-labelledby="velldot-modules-title">
+  <section class="section section-tint velldot-modules-section" id="modules" aria-labelledby="velldot-modules-title">
     <div class="page-width">
       <div class="section-heading">
         <p class="eyebrow">The module suite</p>
@@ -490,7 +521,7 @@ const softwareApplicationJsonLd = {
       <p class="eyebrow">Built around your organization</p>
       <h2 id="velldot-value-title">A workspace with clear boundaries and useful depth.</h2>
       <p>
-        Choose the business capabilities you need, apply access controls and keep reporting and connected workflows part of the same environment.
+        Review the business capabilities in the verified build, then confirm the modules, access controls and connected workflows appropriate for your deployment.
       </p>
     </div>
 
@@ -506,7 +537,7 @@ const softwareApplicationJsonLd = {
         </div>
         <h3>Start focused. Add deliberately.</h3>
         <p>
-          Public signup provisions a tenant, owner, settings and module licences. Tenant owners manage users, billing, renewals and domains; platform administrators handle module licence changes.
+          Where public signup is enabled, it provisions a tenant, owner, settings and module licences. Tenant owners manage users, billing, renewals and domains; platform administrators handle module licence changes.
         </p>
       </article>
 
@@ -623,39 +654,38 @@ const softwareApplicationJsonLd = {
     </div>
   </section>
 
-  <section class="section page-width velldot-steps-section" id="trial" aria-labelledby="velldot-steps-title">
+  <section class="section page-width velldot-steps-section" id="early-access" aria-labelledby="velldot-steps-title">
     <div class="velldot-steps-layout">
       <div class="section-heading">
-        <p class="eyebrow">Trial &amp; onboarding</p>
-        <h2 id="velldot-steps-title">From signup to a working workspace.</h2>
+        <p class="eyebrow">Early access &amp; onboarding</p>
+        <h2 id="velldot-steps-title">From enquiry to a working workspace.</h2>
         <p>
-          A simple start, followed by deliberate decisions about modules, access and rollout.
+          Start with a product conversation, then confirm availability, scope and the right deployment path.
         </p>
-        <a class="text-link" href={signupUrl} {...externalLinkProps}>
-          {trialCtaLabel} <span aria-hidden="true">↗</span>
-          {appConfigured && <span class="sr-only"> (opens in a new tab)</span>}
+        <a class="text-link" href={earlyAccessUrl}>
+          {earlyAccessCtaLabel} <span aria-hidden="true">↗</span>
         </a>
       </div>
       <ol class="velldot-steps">
         <li>
           <span>01</span>
           <div>
-            <h3>Register your organization</h3>
-            <p>Public signup automatically provisions your tenant, owner, settings and module licences. The default trial is 30 days, configurable, with no card required.</p>
+            <h3>Discuss your requirements</h3>
+            <p>Tell us about your organization, the processes you want to improve and the modules or product initiatives that interest you.</p>
           </div>
         </li>
         <li>
           <span>02</span>
           <div>
-            <h3>Confirm modules and access</h3>
-            <p>Agree the required modules and configuration with Overdott. Platform administrators change module licences; tenant owners manage users, billing, renewals and domains.</p>
+            <h3>Confirm availability and scope</h3>
+            <p>Overdott confirms whether a trial or deployment is available, then agrees modules, licensing, access and configuration. Platform administrators handle module licence changes.</p>
           </div>
         </li>
         <li>
           <span>03</span>
           <div>
-            <h3>Invite your team and begin</h3>
-            <p>Set up users and access, confirm configured payment or tax workflows, and agree any onboarding and support scope with Overdott.</p>
+            <h3>Plan onboarding and rollout</h3>
+            <p>Agree user setup, configured payment or tax workflows, onboarding and support. Tenant owners manage users, billing, renewals and domains within the application.</p>
           </div>
         </li>
       </ol>
@@ -666,44 +696,42 @@ const softwareApplicationJsonLd = {
     <div class="page-width">
       <div class="section-heading velldot-pricing-heading">
         <p class="eyebrow">Choose your next step</p>
-        <h2 id="velldot-pricing-title">Try the workspace. Then plan the right setup.</h2>
+        <h2 id="velldot-pricing-title">Explore the right path for your organization.</h2>
         <p>
-          Pricing and payment availability are confirmed in the app or by Overdott. No prices or edition names are published on this page.
+          Register interest or discuss a deployment. Trial access, pricing, licensing and payment availability are confirmed individually; no prices or edition names are published here.
         </p>
       </div>
       <div class="velldot-pricing-grid">
         <article class="velldot-pricing-card velldot-pricing-trial">
-          <span class="velldot-path-label">Trial path</span>
-          <h3>Start with an organization workspace.</h3>
-          <p>Use public signup to provision the tenant, owner, settings and module licences, then confirm the scope for your team.</p>
+          <span class="velldot-path-label">Early-access enquiry</span>
+          <h3>Register interest in Velldot.</h3>
+          <p>Share your requirements and product interests so Overdott can confirm the appropriate next step.</p>
           <ul class="check-list">
-            <li>30-day default trial, configurable</li>
-            <li>No card required</li>
-            <li>Modules subject to licence and configuration</li>
+            <li>Review the verified ERP capabilities</li>
+            <li>Discuss your organization’s requirements</li>
+            <li>Confirm whether a trial or deployment is available</li>
           </ul>
-          <a class="button" href={signupUrl} {...externalLinkProps}>
-            {trialCtaLabel} <span aria-hidden="true">↗</span>
-            {appConfigured && <span class="sr-only"> (opens in a new tab)</span>}
+          <a class="button" href={earlyAccessUrl}>
+            {earlyAccessCtaLabel} <span aria-hidden="true">↗</span>
           </a>
         </article>
         <article class="velldot-pricing-card velldot-pricing-purchase">
-          <span class="velldot-path-label">Purchase path</span>
-          <h3>Review current pricing and payment options.</h3>
-          <p>Confirm the modules and commercial setup in the app or with Overdott before purchase or renewal.</p>
+          <span class="velldot-path-label">Deployment &amp; licensing</span>
+          <h3>Plan a deployment around your business.</h3>
+          <p>Discuss modules, commercial terms, configuration, onboarding and support with Overdott.</p>
           <ul class="check-list">
-            <li>Current pricing confirmed in the app</li>
-            <li>Stripe Checkout for authenticated renewal, when configured</li>
-            <li>M-Pesa STK Push for authenticated renewal, when configured</li>
+            <li>Licensing and commercial terms confirmed by enquiry</li>
+            <li>Configuration and onboarding scope agreed clearly</li>
+            <li>Support arrangements defined for your requirements</li>
           </ul>
-          <a class="button button-light" href={pricingUrl} {...externalLinkProps}>
-            {purchaseCtaLabel} <span aria-hidden="true">↗</span>
-            {appConfigured && <span class="sr-only"> (opens in a new tab)</span>}
+          <a class="button button-light" href={deploymentUrl}>
+            {deploymentCtaLabel} <span aria-hidden="true">↗</span>
           </a>
         </article>
       </div>
       <div class="velldot-pricing-footer">
         <p>Need help choosing the right scope?</p>
-        <a class="text-link" href={talkToSalesUrl}>Talk to sales <span aria-hidden="true">→</span></a>
+        <a class="text-link" href={deploymentUrl}>Talk to Overdott <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -713,7 +741,7 @@ const softwareApplicationJsonLd = {
       <div class="section-heading">
         <p class="eyebrow">Frequently asked questions</p>
         <h2 id="velldot-faq-title">The practical details, upfront.</h2>
-        <p>Understand the trial, module administration, payments and deployment boundaries before you start.</p>
+        <p>Understand product status, module administration, payments and deployment boundaries before you begin.</p>
         <a class="text-link" href={appContactUrl} {...externalLinkProps}>
           {appContactLabel} <span aria-hidden="true">↗</span>
           {appConfigured && <span class="sr-only"> (opens in a new tab)</span>}
@@ -734,17 +762,16 @@ const softwareApplicationJsonLd = {
     <div class="velldot-final-orbit" aria-hidden="true"></div>
     <div class="page-width velldot-final-inner">
       <div>
-        <p class="eyebrow">Velldot ERP · By Overdott</p>
-        <h2 id="velldot-final-title">Bring your operations into focus.</h2>
-        <p>Start a trial or talk with Overdott about the modules, configuration and support your organization needs.</p>
+        <p class="eyebrow">Velldot · By Overdott</p>
+        <h2 id="velldot-final-title">Building practical software for the way businesses work.</h2>
+        <p>Register your interest or talk with Overdott about product availability, modules, configuration and support.</p>
       </div>
       <div class="velldot-actions">
-        <a class="button button-light" href={signupUrl} {...externalLinkProps}>
-          {trialCtaLabel} <span aria-hidden="true">↗</span>
-          {appConfigured && <span class="sr-only"> (opens in a new tab)</span>}
+        <a class="button button-light" href={earlyAccessUrl}>
+          {earlyAccessCtaLabel} <span aria-hidden="true">↗</span>
         </a>
-        <a class="button button-outline" href={talkToSalesUrl}>
-          Talk to sales <span aria-hidden="true">→</span>
+        <a class="button button-outline" href={deploymentUrl}>
+          Discuss Deployment <span aria-hidden="true">→</span>
         </a>
       </div>
     </div>
@@ -1314,6 +1341,108 @@ const softwareApplicationJsonLd = {
     border-radius: 50%;
     background: rgba(38, 117, 232, 0.17);
     filter: blur(58px);
+  }
+
+  .velldot-portfolio {
+    scroll-margin-top: 96px;
+  }
+
+  .velldot-portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .velldot-product-card {
+    display: flex;
+    min-width: 0;
+    min-height: 330px;
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    flex-direction: column;
+    background: #fff;
+  }
+
+  .velldot-product-card-featured {
+    border-color: var(--navy);
+    background:
+      radial-gradient(circle at 90% 8%, rgba(38, 117, 232, 0.24), transparent 36%),
+      var(--navy);
+  }
+
+  .velldot-product-status {
+    width: fit-content;
+    margin-bottom: 28px;
+    padding: 6px 9px;
+    border-radius: 5px;
+    color: var(--blue-dark);
+    background: var(--mist-blue);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .velldot-product-card-featured .velldot-product-status {
+    color: #bcd7ff;
+    background: rgba(138, 184, 255, 0.1);
+  }
+
+  .velldot-product-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+  }
+
+  .velldot-product-card-featured h3 {
+    color: #fff;
+  }
+
+  .velldot-product-card > p {
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .velldot-product-card-featured > p {
+    color: #b7c6d9;
+  }
+
+  .velldot-product-points {
+    display: grid;
+    margin: 0 0 24px;
+    padding: 0;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .velldot-product-points li {
+    position: relative;
+    padding-left: 20px;
+    color: #b7c6d9;
+    font-size: 11px;
+  }
+
+  .velldot-product-points li::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--blue-light);
+    content: '✓';
+  }
+
+  .velldot-product-card > .text-link {
+    margin-top: auto;
+  }
+
+  .velldot-product-card-featured .text-link {
+    color: var(--blue-light);
+  }
+
+  .velldot-portfolio-note {
+    margin: 18px 0 0;
+    color: var(--body);
+    font-size: 11px;
   }
 
   .velldot-proof-strip {
@@ -2303,6 +2432,18 @@ const softwareApplicationJsonLd = {
       padding: 23px;
     }
 
+    .velldot-portfolio-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .velldot-product-card-featured {
+      grid-column: 1 / -1;
+    }
+
+    .velldot-product-card {
+      min-height: 0;
+    }
+
     .velldot-proof-strip ul {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px 0;
@@ -2363,6 +2504,14 @@ const softwareApplicationJsonLd = {
   }
 
   @media (max-width: 720px) {
+    .velldot-portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .velldot-product-card-featured {
+      grid-column: auto;
+    }
+
     .velldot-module-toolbar {
       align-items: flex-start;
       flex-direction: column;

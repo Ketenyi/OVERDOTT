@@ -1,27 +1,36 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TechVisual from '../../components/TechVisual.astro';
+import { servicePillars } from '../../data/services';
 import { whatsappNumber } from '../../config';
 
 const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
-const values = [
-  ['Practical innovation', 'Choose technology for the problems it can solve, not novelty alone.'],
-  ['Security and responsibility', 'Consider security, access and risk as part of implementation.'],
-  ['Integrity and transparency', 'Be clear about scope, assumptions, responsibilities and limitations.'],
-  ['Customer-focused delivery', 'Keep requirements and the people using the systems in view.'],
-  ['Continuous learning', 'Stay curious as tools, risks and business needs evolve.'],
-  ['Long-term value', 'Consider maintainability and ownership alongside the initial decision.'],
+const principles = [
+  ['Practical Approach', 'We focus on understanding the business problem before recommending technology.'],
+  ['Connected Thinking', 'We consider how your applications, processes, people and infrastructure work together.'],
+  ['Solutions That Fit', 'We believe effective technology should fit the needs and scale of your business.'],
+  ['Long-Term Perspective', 'We aim to build lasting relationships by helping businesses continuously improve their technology.'],
+];
+
+const steps = [
+  ['Understand', 'Understand the business, the challenge and what you want to achieve.'],
+  ['Identify', 'Identify the opportunity, requirements and right approach.'],
+  ['Build', 'Build, configure, integrate and test the agreed solution.'],
+  ['Support', 'Support its growth through clear handover and ongoing improvement where needed.'],
 ];
 ---
 
-<BaseLayout title="About Overdott Technologies | Our Approach and Values" description="Learn about Overdott Technologies Limited's purpose, mission and practical approach to technology solutions in Kenya.">
+<BaseLayout
+  title="About Overdott Technologies | Practical Technology Solutions"
+  description="Learn about Overdott Technologies Limited's practical approach to digital solutions, business automation and IT infrastructure in Kenya."
+>
   <section class="page-hero page-hero-split">
     <div class="page-width page-hero-inner">
       <div class="page-hero-copy">
         <p class="eyebrow">About Overdott</p>
-        <h1>Technology should make work clearer, safer and more connected.</h1>
-        <p>Overdott Technologies Limited helps organizations explore, implement and manage practical technology solutions.</p>
+        <h1>Technology with purpose. Solutions with perspective.</h1>
+        <p>Overdott Technologies Limited is a technology solutions company focused on helping businesses build, manage and improve their digital and IT environments.</p>
         <div class="hero-actions">
           <a class="button" href="/contact/">Start a conversation <span aria-hidden="true">↗</span></a>
           <a class="button button-outline" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
@@ -29,25 +38,9 @@ const values = [
       </div>
       <aside class="page-hero-aside" aria-label="Our approach">
         <div class="hero-panel">
-          <p class="hero-panel-label">How we work</p>
-          <div class="hero-panel-list">
-            <div class="hero-panel-row">
-              <strong>Understand</strong>
-              <span>Requirements first</span>
-            </div>
-            <div class="hero-panel-row">
-              <strong>Connect</strong>
-              <span>Systems in context</span>
-            </div>
-            <div class="hero-panel-row">
-              <strong>Deliver</strong>
-              <span>Clear responsibilities</span>
-            </div>
-            <div class="hero-panel-row">
-              <strong>Consider</strong>
-              <span>Long-term value</span>
-            </div>
-          </div>
+          <p class="hero-panel-label">Our approach</p>
+          <p>Understand the business. Identify the opportunity. Build the solution. Support its growth.</p>
+          <a class="text-link" href="#our-focus">Explore our focus <span aria-hidden="true">→</span></a>
         </div>
       </aside>
     </div>
@@ -56,10 +49,11 @@ const values = [
   <section class="section page-width">
     <div class="image-copy">
       <div class="about-story-copy">
-        <p class="eyebrow">Our purpose</p>
-        <h2>Practical technology, considered as a whole.</h2>
-        <p>Organizations rely on connected infrastructure, secure access, useful software and digital channels. Overdott brings these needs into one conversation, from technology sourcing and integration to digital development and support.</p>
-        <p>Our approach is to understand the requirement first, explain options clearly and agree on work that fits the engagement.</p>
+        <p class="eyebrow">Our philosophy</p>
+        <h2>We believe technology should be purposeful, accessible and useful.</h2>
+        <p>Our approach starts with understanding the challenge, identifying the right solution and delivering technology that creates meaningful value.</p>
+        <p>We bring together software development, business process automation and IT infrastructure expertise to deliver practical technology solutions aligned with business needs.</p>
+        <a class="text-link" href="/services/">Discover our services <span aria-hidden="true">→</span></a>
       </div>
       <div class="about-visual">
         <TechVisual />
@@ -67,36 +61,34 @@ const values = [
     </div>
   </section>
 
-  <section class="section section-compact section-tint">
+  <section class="section section-tint" id="our-focus">
     <div class="page-width">
       <div class="section-heading">
-        <p class="eyebrow">Our direction</p>
-        <h2>Useful technology. A long-term view.</h2>
+        <p class="eyebrow">Our focus</p>
+        <h2>Three connected ways to make technology useful.</h2>
+        <p>We consider the digital experience, the processes behind it and the infrastructure that keeps everything running.</p>
       </div>
-      <div class="mission-grid">
-        <article class="mission-card">
-          <p class="eyebrow">Our mission</p>
-          <h3>Help businesses use technology effectively.</h3>
-          <p>To help businesses adopt, integrate and use technology effectively through practical solutions, dependable technical services and a commitment to security, usability and long-term value.</p>
-        </article>
-        <article class="mission-card">
-          <p class="eyebrow">Our vision</p>
-          <h3>Build trust through useful technology.</h3>
-          <p>To become a trusted technology solutions and integration partner for businesses in Kenya and, over time, across Africa.</p>
-        </article>
+      <div class="card-grid">
+        {servicePillars.map((pillar) => (
+          <article class="service-card">
+            <span class="service-index">Service {pillar.number}</span>
+            <h3>{pillar.title}</h3>
+            <p>{pillar.summary}</p>
+            <a class="text-link" href={pillar.href}>Explore {pillar.shortTitle} <span aria-hidden="true">→</span></a>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="section section-compact page-width">
     <div class="section-heading">
-      <p class="eyebrow">Our values</p>
-      <h2>How we approach the work.</h2>
-      <p>These principles guide how we scope recommendations, communicate and consider what happens after implementation.</p>
+      <p class="eyebrow">How we work</p>
+      <h2>Understand the business before choosing the technology.</h2>
     </div>
-    <div class="values-grid">
-      {values.map(([title, description]) => (
-        <div class="value-item">
+    <div class="process-grid about-process">
+      {steps.map(([title, description], index) => (
+        <div class="process-step">
           <h3>{title}</h3>
           <p>{description}</p>
         </div>
@@ -104,15 +96,34 @@ const values = [
     </div>
   </section>
 
+  <section class="section section-dark">
+    <div class="page-width">
+      <div class="section-heading">
+        <p class="eyebrow">Why Overdott</p>
+        <h2>Technology with a practical perspective.</h2>
+        <p>We aim to make technical decisions understandable, useful and appropriate to the business.</p>
+      </div>
+      <div class="principle-grid">
+        {principles.map(([title, description], index) => (
+          <article class="principle-card">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <h3>{title}</h3>
+            <p>{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="cta-band">
     <div class="page-width cta-inner">
       <div>
         <p class="eyebrow">Start a conversation</p>
-        <h2>Start with the outcome you need.</h2>
-        <p>Tell us what you are trying to solve, and we'll explore practical next steps.</p>
+        <h2>Have a business challenge we can help solve?</h2>
+        <p>Let’s explore how the right technology can make your business work better.</p>
       </div>
       <div class="cta-actions">
-        <a class="button button-light" href="/contact/">Contact Overdott <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href="/contact/">Start a Conversation <span aria-hidden="true">↗</span></a>
         <a class="button button-outline" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
       </div>
     </div>

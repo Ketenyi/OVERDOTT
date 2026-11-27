@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { services, findService, type Service } from '../../data/services';
+import { services, findService, findPillar, type Service } from '../../data/services';
 import { whatsappDisplay, whatsappNumber } from '../../config';
 
 export function getStaticPaths() {
@@ -11,6 +11,7 @@ export function getStaticPaths() {
 }
 
 const { service } = Astro.props;
+const pillar = findPillar(service.pillar)!;
 const relatedServices = service.related
   .map(findService)
   .filter((item): item is Service => item !== undefined);
@@ -33,7 +34,7 @@ const enquiryUrl = `/contact/?interest=${service.slug}`;
         <h1>{service.title}</h1>
         <p>{service.summary}</p>
         <div class="hero-actions">
-          <a class="button" href={enquiryUrl}>Discuss your requirements <span aria-hidden="true">↗</span></a>
+          <a class="button" href={enquiryUrl}>{service.cta} <span aria-hidden="true">↗</span></a>
           <a class="button button-outline" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Chat on WhatsApp <span aria-hidden="true">↗</span></a>
         </div>
       </div>
@@ -88,14 +89,20 @@ const enquiryUrl = `/contact/?interest=${service.slug}`;
         </article>
         <article class="capability-card capability-card-accent">
           <span class="capability-number">02</span>
-          <h3>Potential engagement deliverables</h3>
+          <h3>{pillar.startingPointsLabel}</h3>
           <ul class="check-list">
-            <li>Requirements and current-environment review</li>
-            <li>Suitable options, assumptions and agreed project scope</li>
-            <li>Implementation, testing and handover as specified</li>
+            {pillar.startingPoints.map((item) => <li>{item}</li>)}
           </ul>
+          <p class="capability-card-note">Final scope, assumptions, technologies and deliverables are agreed before implementation.</p>
         </article>
       </div>
+      {(service.technologies || pillar.technologies) && (
+        <div class="technology-note service-technology-note">
+          <strong>Relevant technologies may include</strong>
+          <span>{(service.technologies || pillar.technologies)!.join(' · ')}</span>
+          <small>No vendor partnership or authorization is claimed. Delivery depends on the agreed scope and appropriately qualified resources.</small>
+        </div>
+      )}
     </div>
   </section>
 
@@ -160,7 +167,7 @@ const enquiryUrl = `/contact/?interest=${service.slug}`;
         <p>Share your goals and current setup. We’ll help identify a sensible next step.</p>
       </div>
       <div class="cta-actions">
-        <a class="button button-light" href={enquiryUrl}>Request a consultation <span aria-hidden="true">↗</span></a>
+        <a class="button button-light" href={enquiryUrl}>{service.cta} <span aria-hidden="true">↗</span></a>
         <a class="button button-outline" href={whatsappUrl} target="_blank" rel="noopener noreferrer">WhatsApp us <span aria-hidden="true">↗</span></a>
       </div>
     </div>
